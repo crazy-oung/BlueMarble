@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blue Marble</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<style>
+.marble_board {
+	background-image: url("./board/b1.jpg");
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 100%;
+}
+
+table, tr, td{
+border: 2px solid #000000
+
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	window
+			.addEventListener(
+					"load",
+					function() {
+						let beforePoint = 1;
+						let afterPoint = 1;
+						let play = document.querySelector("#play");
+						play
+								.addEventListener(
+										"click",
+										function() {
+											let ran = Math
+													.floor((Math.random() * 6) + 1);
+											document.querySelector("#dice").value = ran;
+											if (beforePoint + ran < 45) {
+												afterPoint = beforePoint + ran;
+											} else {
+												afterPoint = beforePoint + ran
+														- 44;
+											}
+											document.querySelector("#point").value = afterPoint;
+											// 말을 이동시킵니다.
+											let afterId = "#p" + afterPoint;
+											document.querySelector(afterId).innerHTML = '<button class="btn-danger">♠</button>';
+
+											let beforeId = "#p" + beforePoint;
+											document.querySelector(beforeId).innerHTML = "";
+
+											beforePoint = afterPoint;
+										});
+					});
+</script>
+</head>
+<body>
+
+	<div class="container" align="center">
+		<h5>
+			Blue Marble <input id="play" type="button" value="주사위 play" /> 주사위 값
+			: <input id="dice" type="text" /> 이동 지점 : <input id="point"
+				type="text" />
+		</h5>
+		
+	<div class="continer marble_board" align="center">
+	<div>HI</div>
+	<table class="table" style="margin:14px">
+		<tr>
+			<td width="155px">
+				<div class="board_end_up_left">
+				1 <span id="p1">
+						<button class="btn-danger">♠</button>
+				</span>
+				</div>
+			</td>
+			<td width="7%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			<td width="8%">
+				<div class="board_up_down">
+				2<span id="p2"></span>
+				</div>
+			</td>
+			
+			<td width="14%">
+			<div class="board_end_up_right">
+				11<span id="p11"></span>
+			</div>				
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<div class="board_end_up_left">
+				1 <span id="p1">
+						<button class="btn-danger">♠</button>
+				</span>
+				</div>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class=" board_up_down">
+				2<span id="p2"></span>
+			</td>
+			<td class="board_end_up_left">
+				11<span id="p11"></span>
+			</td>
+		</tr>	
+	</table>
+</div>
+</div>
+</body>
+</html>
