@@ -12,11 +12,15 @@
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: 100%;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
-table, tr, td{
-border: 2px solid #000000
+.no_border {
+	border: none !important;
+}
 
+.boaard_floor {
+	background: lightblue;
 }
 </style>
 <script
@@ -59,121 +63,247 @@ border: 2px solid #000000
 </script>
 </head>
 <body>
+	<div class="boaard_floor">
 
-	<div class="container" align="center">
-		<h5>
-			Blue Marble <input id="play" type="button" value="주사위 play" /> 주사위 값
-			: <input id="dice" type="text" /> 이동 지점 : <input id="point"
-				type="text" />
-		</h5>
-		
-	<div class="continer marble_board" align="center">
-	<div>HI</div>
-	<table class="table" style="margin:14px">
-		<tr>
-			<td width="155px">
-				<div class="board_end_up_left">
-				1 <span id="p1">
-						<button class="btn-danger">♠</button>
-				</span>
+		<div class="container" align="center">
+
+			<h5>
+				Blue Marble <input id="play" type="button" value="주사위 play" /> 주사위
+				값 : <input id="dice" type="text" /> 이동 지점 : <input id="point"
+					type="text" />
+			</h5>
+
+			<div class="marble_board" align="center">
+				<div
+					style="padding-left: 14px; padding-right: 18px; padding-top: 14px">
+					<table class="table table-bordered">
+						<tr height="158px">
+							<td width="14%">
+								1 <span id="p1">
+									<button class="btn-danger">♠</button>
+								</span>
+							</td>
+							<td width="7.8%">
+								2<span id="2"></span>
+							</td>
+							<td width="7.8%">
+								3<span id="p3"></span>
+							</td>
+							<td width="7.8%">
+								4<span id="p4"></span>
+							</td>
+							<td width="7.5%">
+								5<span id="p5"></span>
+							</td>
+							<td width="8%">
+								6<span id="p6"></span>
+							</td>
+							<td width="7.5%">
+								7<span id="p7"></span>
+							</td>
+							<td width="7.7%">
+								8<span id="p8"></span>
+							</td>
+							<td width="7.9%">
+								9<span id="p9"></span>
+							</td>
+							<td width="7.7%">
+								10<span id="p10"></span>
+							</td>
+							<td width="14%">
+								11<span id="p11"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								40<span id="p40"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td>
+								12<span id="p12"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								39<span id="p39"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td>
+								13<span id="p13"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								38<span id="p38"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td>
+								14<span id="p14"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								37<span id="p37"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class=" board_up_down">15<span id="p15"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								36<span id="p36"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class=" board_up_down">16<span id="p16"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								35<span id="p35"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class=" board_up_down">17<span id="p17"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								34<span id="p34"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class=" board_up_down">18<span id="p18"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								33<span id="p33"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class=" board_up_down">19<span id="p19"></span>
+							</td>
+						</tr>
+						<tr height="88px">
+							<td>
+								32<span id="p32"></span>
+							</td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class="no_border"></td>
+							<td class=" board_up_down">20<span id="p20"></span>
+							</td>
+						</tr>
+						<tr height="158px">
+							<td width="14%">
+								31<span id="p31"></span>
+							</td>
+							<td width="7.8%">
+								30<span id="p30"></span>
+							</td>
+							<td width="7.8%">
+								29<span id="p29"></span>
+							</td>
+							<td width="7.8%">
+								28<span id="p28"></span>
+							</td>
+							<td width="7.5%">
+								27<span id="p27"></span>
+							</td>
+							<td width="8%">
+								26<span id="p26"></span>
+							</td>
+							<td width="7.5%">
+								25<span id="p25"></span>
+							</td>
+							<td width="7.7%">
+								24<span id="p24"></span>
+							</td>
+							<td width="7.9%">
+								23<span id="p23"></span>
+							</td>
+							<td width="7.7%">
+								22<span id="p22"></span>
+							</td>
+							<td width="14%">
+								21<span id="p21"></span>
+							</td>
+						</tr>
+					</table>
 				</div>
-			</td>
-			<td width="7%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			<td width="8%">
-				<div class="board_up_down">
-				2<span id="p2"></span>
-				</div>
-			</td>
-			
-			<td width="14%">
-			<div class="board_end_up_right">
-				11<span id="p11"></span>
-			</div>				
-			</td>
-		</tr>	
-		<tr>
-			<td>
-				<div class="board_end_up_left">
-				1 <span id="p1">
-						<button class="btn-danger">♠</button>
-				</span>
-				</div>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class=" board_up_down">
-				2<span id="p2"></span>
-			</td>
-			<td class="board_end_up_left">
-				11<span id="p11"></span>
-			</td>
-		</tr>	
-	</table>
-</div>
-</div>
+			</div>
+
+		</div>
+
+
+
+	</div>
 </body>
 </html>
