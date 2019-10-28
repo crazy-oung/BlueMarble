@@ -20,15 +20,17 @@
 <div class="boaard_floor"><!-- 게임페이지 시작 -->
 	
 	<div class="container" align="center">
-		<b class="text-primary">BLUE MARBLE</b>
+		<h4 style="margin: 10px;"><b class="text-primary">BLUE MARBLE</b></h4 >
 		<p class="interface form-inline">
-			<input id="dice" class="form-control" type="text" style="width: 50px"> <b>주사위 결과-</b>
+			<input id="dice1" class="form-control" type="text" style="width: 40px">
+			<input id="dice2" class="form-control" type="text" style="width: 40px"> <b>주사위 결과-</b>
+			
 			<button id="play" type="button" class="btn btn-primary"><b>굴려 🎲 굴려!</b></button>
-			<b>-이동 지점</b> <input id="point" class="form-control" type="text" style="width: 50px">
+			<b>-이동 지점</b> <input id="point" class="form-control" type="text" style="width: 45px">
 		</p>
 
 		<div class="marble_board" align="center">
-			<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px; padding-bottom:0px;">
+			<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px;">
 				<table class="table" style="text-align: center; color:tomato; font-weight: bold;">
 					<tr height="158px">
 						<td class="td_tb no_border">
@@ -71,7 +73,7 @@
 							20<span id="p20"></span>
 						</td>
 						<td class="no_border no_hover" colspan="9" rowspan="9">
-							<!-- 빈칸 비우기  -->
+							<!-- 빈칸 행 열 합치기 & 클릭 비활성화   -->
 						</td>
 						<td class="td_rl no_border">
 							32<span id="p32"></span>
@@ -201,7 +203,7 @@
 				</table>
 			</div>
 		</div>
-		<hr><!-- 구분선 -->	
+		<hr style="margin: 10px;"><!-- 구분선 -->	
 		<p class="text-dark">
 			BLUE MARBLE(자바스크립트 연습용. 비상업 용도. 부루마블과 똑같이 만들어 보기 ) 
 			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
