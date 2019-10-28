@@ -3,13 +3,17 @@
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: 100%;
+	border-radius: 15px;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 td:hover  {
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.6);
 	background: rgba(204, 230, 255, 0.2);
+	border-radius: 15px;
 }
-
+.horses{
+	font-size: xx-large;
+}
 .td_tb{
 	padding-top: 58px !important;
 }
@@ -25,6 +29,6 @@ td:hover  {
 	background: lightblue;
 }
 
-.interface{
- 
+.no_hover{
+	visibility: hidden;
 }

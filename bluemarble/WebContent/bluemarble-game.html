@@ -1,291 +1,213 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Blue Marble Test</title>
+<!-- Î∂ÄÌä∏Ïä§Ìä∏Îû© 3 -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Ω∫≈∏¿œ -->
+
+<!-- Ïä§ÌÉÄÏùº -->
 <link rel="stylesheet" href="./css/board.css">
-
-<script>
-$(document).ready(function() {
-	// ¡ÿ∫Ò øœ∑· 
-	console.log("ready");
-	
-	// ∫Øºˆ √ ±‚»≠ 
-	let beforePoint = 1;
-	let afterPoint = 1;
-	
-	// «√∑π¿Ã πˆ∆∞ ≈¨∏Ø 
-	$("#play").click( function() {
-		let ran = Math.floor((Math.random() * 6)+1);	//1~6
-		console.log(ran);
-		$("#dice").val(ran);
-		console.log($("#dice").attr("value"))
-		if (beforePoint + ran < 41) {
-			afterPoint = beforePoint + ran;
-		} else {
-			afterPoint = beforePoint + ran - 40;
-		}
-		$("#point").val(afterPoint);
-		console.log($("#point").attr("value"))
-		// ∏ª¿ª ¿ÃµøΩ√≈µ¥œ¥Ÿ.
-		let afterId = "#p" + afterPoint;
-		$(afterId).append('<button class="btn btn-danger">∏ª</button>');
-
-		let beforeId = "#p" + beforePoint;
-		$(beforeId).empty();
-
-		beforePoint = afterPoint;
-	});
-})		 
-</script>
-
+<!-- Í≤åÏûÑ ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ ÏΩîÎìú ÎßÅÌÅ¨ -->
+<script src="/bluemarble/js/game.js"></script>
 </head>
 <body>
-	<div class="boaard_floor">
+<div class="boaard_floor"><!-- Í≤åÏûÑÌéòÏù¥ÏßÄ ÏãúÏûë -->
 	
-		<div class="container" align="center">
-			<p class="interface form-inline">
-				Blue Marble <button id="play" type="button" class="btn btn-primary">¡÷ªÁ¿ß ±º∏Æ±‚</button>
-				¡÷ªÁ¿ß ∞™ : <input id="dice" class="form-control" type="text" style="width: 100px" >
-				¿Ãµø ¡ˆ¡° : <input id="point" class="form-control" type="text" style="width: 100px" >
-			</p>
-			<div class="marble_board" align="center">
-				<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px">
-					<table class="table table-bordered" style="text-align: center; color:tomato; font-weight: bold">
-						<tr height="158px">
-							<td width="14%" class="td_tb">
-								1<span id="p1"><button class="btn btn-danger">∏ª</button></span>
-							</td>
-							<td width="7.8%" class="td_tb">
-								2<span id="p2"></span>
-							</td>
-							<td width="7.8%" class="td_tb">
-								3<span id="p3"></span>
-							</td>
-							<td width="7.8%" class="td_tb">
-								4<span id="p4"></span>
-							</td>
-							<td width="7.5%" class="td_tb">
-								5<span id="p5"></span>
-							</td>
-							<td width="8%" class="td_tb">
-								6<span id="p6"></span>
-							</td>
-							<td width="7.5%" class="td_tb">
-								7<span id="p7"></span>
-							</td>
-							<td width="7.7%" class="td_tb">
-								8<span id="p8"></span>
-							</td>
-							<td width="7.9%" class="td_tb">
-								9<span id="p9"></span>
-							</td>
-							<td width="7.7%" class="td_tb">
-								10<span id="p10"></span>
-							</td>
-							<td width="14%" class="td_tb">
-								11<span id="p11"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								40<span id="p40"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								12<span id="p12"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								39<span id="p39"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								13<span id="p13"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								38<span id="p38"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								14<span id="p14"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								37<span id="p37"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								15<span id="p15"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								36<span id="p36"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								16<span id="p16"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								35<span id="p35"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								17<span id="p17"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								34<span id="p34"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								18<span id="p18"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								33<span id="p33"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">
-								19<span id="p19"></span>
-							</td>
-						</tr>
-						<tr height="88px">
-							<td class="td_rl">
-								32<span id="p32"></span>
-							</td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="no_border"></td>
-							<td class="td_rl">20<span id="p20"></span>
-							</td>
-						</tr>
-						<tr height="158px">
-							<td class="td_tb">
-								31<span id="p31"></span>
-							</td>
-							<td class="td_tb">
-								30<span id="p30"></span>
-							</td>
-							<td class="td_tb">
-								29<span id="p29"></span>
-							</td>
-							<td class="td_tb">
-								28<span id="p28"></span>
-							</td>
-							<td class="td_tb">
-								27<span id="p27"></span>
-							</td>
-							<td class="td_tb">
-								26<span id="p26"></span>
-							</td>
-							<td class="td_tb">
-								25<span id="p25"></span>
-							</td>
-							<td class="td_tb">
-								24<span id="p24"></span>
-							</td>
-							<td class="td_tb">
-								23<span id="p23"></span>
-							</td>
-							<td class="td_tb">
-								22<span id="p22"></span>
-							</td>
-							<td class="td_tb">
-								21<span id="p21"></span>
-							</td>
-						</tr>
-					</table>
-					<hr>
-				</div>
-			</div>
+	<div class="container" align="center">
+		<b class="text-primary">BLUE MARBLE</b>
+		<p class="interface form-inline">
+			<input id="dice" class="form-control" type="text" style="width: 50px"> <b>Ï£ºÏÇ¨ÏúÑ Í≤∞Í≥º-</b>
+			<button id="play" type="button" class="btn btn-primary"><b>Íµ¥Î†§ üé≤ Íµ¥Î†§!</b></button>
+			<b>-Ïù¥Îèô ÏßÄÏ†ê</b> <input id="point" class="form-control" type="text" style="width: 50px">
+		</p>
 
+		<div class="marble_board" align="center">
+			<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px; padding-bottom:0px;">
+				<table class="table" style="text-align: center; color:tomato; font-weight: bold;">
+					<tr height="158px">
+						<td class="td_tb no_border">
+							21<span id="p21"></span>
+						</td>
+						<td class="td_tb no_border">
+							22<span id="p22"></span>
+						</td>
+						<td class="td_tb no_border">
+							23<span id="p23"></span>
+						</td>
+						<td class="td_tb no_border">
+							24<span id="p24"></span>
+						</td>
+						<td class="td_tb no_border">
+							25<span id="p25"></span>
+						</td>
+						<td class="td_tb no_border">
+							26<span id="p26"></span>
+						</td>
+						<td class="td_tb no_border">
+							27<span id="p27"></span>
+						</td>
+						<td class="td_tb no_border">
+							28<span id="p28"></span>
+						</td>
+						<td class="td_tb no_border">
+							29<span id="p29"></span>
+						</td>
+						<td class="td_tb no_border">
+							30<span id="p30"></span>
+						</td>
+						<td class="td_tb no_border">
+							31<span id="p31"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							20<span id="p20"></span>
+						</td>
+						<td class="no_border no_hover" colspan="9" rowspan="9">
+							<!-- ÎπàÏπ∏ ÎπÑÏö∞Í∏∞  -->
+						</td>
+						<td class="td_rl no_border">
+							32<span id="p32"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							19<span id="p19"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							33<span id="p33"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							18<span id="p18"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							34<span id="p34"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							17<span id="p17"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							35<span id="p35"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							16<span id="p16"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							36<span id="p36"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							15<span id="p15"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							37<span id="p37"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							14<span id="p14"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							38<span id="p38"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							13<span id="p13"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							39<span id="p39"></span>
+						</td>
+					</tr>
+					
+					<tr height="88px">
+						<td class="td_rl no_border">
+							12<span id="p12"></span>
+						</td>
+						
+						<td class="td_rl no_border">
+							40<span id="p40"></span>
+						</td>
+					</tr>
+				
+					<tr height="158px">
+						<td width="14%" class="td_tb no_border">
+							11<span id="p11"></span>
+						</td>
+						<td width="7.7%" class="td_tb no_border">
+							10<span id="p10"></span>
+						</td>
+						<td width="7.9%" class="td_tb no_border">
+							9<span id="p9"></span>
+						</td>
+						<td width="7.7%" class="td_tb no_border">
+							8<span id="p8"></span>
+						</td>
+						<td width="7.5%" class="td_tb no_border">
+							7<span id="p7"></span>
+						</td>
+						<td width="8%" class="td_tb no_border">
+							6<span id="p6"></span>
+						</td>
+						<td width="7.5%" class="td_tb no_border">
+							5<span id="p5"></span>
+						</td>
+						<td width="7.8%" class="td_tb no_border">
+							4<span id="p4"></span>
+						</td>
+						<td width="7.8%" class="td_tb no_border">
+							3<span id="p3"></span>
+						</td>
+						<td width="7.8%" class="td_tb no_border">
+							2<span id="p2"></span>
+						</td>
+						<td width="14%" class="td_tb no_border">
+							<span id="p1">
+								<b class="horses" id="1p">üé†</b>
+								<b class="horses" id="2p">üöÄ</b>
+								<b class="horses" id="3p">üõ´</b>
+								<b class="horses" id="4p">üöÅ</b>
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
+		<hr><!-- Íµ¨Î∂ÑÏÑ† -->	
+		<p class="text-dark">
+			BLUE MARBLE(ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Ïó∞ÏäµÏö©. ÎπÑÏÉÅÏóÖ Ïö©ÎèÑ. Î∂ÄÎ£®ÎßàÎ∏îÍ≥º ÎòëÍ∞ôÏù¥ ÎßåÎì§Ïñ¥ Î≥¥Í∏∞ ) 
+			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">‚ìícrazy-oung</a></b>
+		</p>
 	</div>
+		
+</div><!-- ÎÇ¥Ïö© ÎÅù -->
 </body>
 </html>
