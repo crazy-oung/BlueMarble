@@ -1,121 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Blue Marble</title>
+<title>Blue Marble Test</title>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- jQuery library -->
-<style>
-.marble_board {
-	background-image: url("./board/b1.jpg");
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: 100%;
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-}
-
-.no_border {
-	border: none !important;
-}
-
-.boaard_floor {
-	background: lightblue;
-}
-</style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 스타일 -->
+<link rel="stylesheet" href="./css/board.css">
+
 <script>
-	window
-			.addEventListener(
-					"load",
-					function() {
-						let beforePoint = 1;
-						let afterPoint = 1;
-						let play = document.querySelector("#play");
-						play
-								.addEventListener(
-										"click",
-										function() {
-											let ran = Math
-													.floor((Math.random() * 6) + 1);
-											document.querySelector("#dice").value = ran;
-											if (beforePoint + ran < 45) {
-												afterPoint = beforePoint + ran;
-											} else {
-												afterPoint = beforePoint + ran
-														- 44;
-											}
-											document.querySelector("#point").value = afterPoint;
-											// 말을 이동시킵니다.
-											let afterId = "#p" + afterPoint;
-											document.querySelector(afterId).innerHTML = '<button class="btn-danger">♠</button>';
+$(document).ready(function() {
+	// 준비 완료 
+	console.log("ready");
+	
+	// 변수 초기화 
+	let beforePoint = 1;
+	let afterPoint = 1;
+	
+	// 플레이 버튼 클릭 
+	$("#play").click( function() {
+		let ran = Math.floor((Math.random() * 6)+1);	//1~6
+		console.log(ran);
+		$("#dice").val(ran);
+		console.log($("#dice").attr("value"))
+		if (beforePoint + ran < 41) {
+			afterPoint = beforePoint + ran;
+		} else {
+			afterPoint = beforePoint + ran - 40;
+		}
+		$("#point").val(afterPoint);
+		console.log($("#point").attr("value"))
+		// 말을 이동시킵니다.
+		let afterId = "#p" + afterPoint;
+		$(afterId).append('<button class="btn btn-danger">말</button>');
 
-											let beforeId = "#p" + beforePoint;
-											document.querySelector(beforeId).innerHTML = "";
+		let beforeId = "#p" + beforePoint;
+		$(beforeId).empty();
 
-											beforePoint = afterPoint;
-										});
-					});
+		beforePoint = afterPoint;
+	});
+})		 
 </script>
+
 </head>
 <body>
 	<div class="boaard_floor">
-
+	
 		<div class="container" align="center">
-
-			<h5>
-				Blue Marble <input id="play" type="button" value="주사위 play" /> 주사위
-				값 : <input id="dice" type="text" /> 이동 지점 : <input id="point"
-					type="text" />
-			</h5>
-
+			<p class="interface form-inline">
+				Blue Marble <button id="play" type="button" class="btn btn-primary">주사위 굴리기</button>
+				주사위 값 : <input id="dice" class="form-control" type="text" style="width: 100px" >
+				이동 지점 : <input id="point" class="form-control" type="text" style="width: 100px" >
+			</p>
 			<div class="marble_board" align="center">
-				<div
-					style="padding-left: 14px; padding-right: 18px; padding-top: 14px">
-					<table class="table table-bordered">
+				<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px">
+					<table class="table table-bordered" style="text-align: center; color:tomato; font-weight: bold">
 						<tr height="158px">
-							<td width="14%">
-								1 <span id="p1">
-									<button class="btn-danger">♠</button>
-								</span>
+							<td width="14%" class="td_tb">
+								1<span id="p1"><button class="btn btn-danger">말</button></span>
 							</td>
-							<td width="7.8%">
-								2<span id="2"></span>
+							<td width="7.8%" class="td_tb">
+								2<span id="p2"></span>
 							</td>
-							<td width="7.8%">
+							<td width="7.8%" class="td_tb">
 								3<span id="p3"></span>
 							</td>
-							<td width="7.8%">
+							<td width="7.8%" class="td_tb">
 								4<span id="p4"></span>
 							</td>
-							<td width="7.5%">
+							<td width="7.5%" class="td_tb">
 								5<span id="p5"></span>
 							</td>
-							<td width="8%">
+							<td width="8%" class="td_tb">
 								6<span id="p6"></span>
 							</td>
-							<td width="7.5%">
+							<td width="7.5%" class="td_tb">
 								7<span id="p7"></span>
 							</td>
-							<td width="7.7%">
+							<td width="7.7%" class="td_tb">
 								8<span id="p8"></span>
 							</td>
-							<td width="7.9%">
+							<td width="7.9%" class="td_tb">
 								9<span id="p9"></span>
 							</td>
-							<td width="7.7%">
+							<td width="7.7%" class="td_tb">
 								10<span id="p10"></span>
 							</td>
-							<td width="14%">
+							<td width="14%" class="td_tb">
 								11<span id="p11"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								40<span id="p40"></span>
 							</td>
 							<td class="no_border"></td>
@@ -127,12 +106,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td>
+							<td class="td_rl">
 								12<span id="p12"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								39<span id="p39"></span>
 							</td>
 							<td class="no_border"></td>
@@ -144,12 +123,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td>
+							<td class="td_rl">
 								13<span id="p13"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								38<span id="p38"></span>
 							</td>
 							<td class="no_border"></td>
@@ -161,12 +140,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td>
+							<td class="td_rl">
 								14<span id="p14"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								37<span id="p37"></span>
 							</td>
 							<td class="no_border"></td>
@@ -178,11 +157,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td class=" board_up_down">15<span id="p15"></span>
+							<td class="td_rl">
+								15<span id="p15"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								36<span id="p36"></span>
 							</td>
 							<td class="no_border"></td>
@@ -194,11 +174,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td class=" board_up_down">16<span id="p16"></span>
+							<td class="td_rl">
+								16<span id="p16"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								35<span id="p35"></span>
 							</td>
 							<td class="no_border"></td>
@@ -210,11 +191,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td class=" board_up_down">17<span id="p17"></span>
+							<td class="td_rl">
+								17<span id="p17"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								34<span id="p34"></span>
 							</td>
 							<td class="no_border"></td>
@@ -226,11 +208,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td class=" board_up_down">18<span id="p18"></span>
+							<td class="td_rl">
+								18<span id="p18"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								33<span id="p33"></span>
 							</td>
 							<td class="no_border"></td>
@@ -242,11 +225,12 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td class=" board_up_down">19<span id="p19"></span>
+							<td class="td_rl">
+								19<span id="p19"></span>
 							</td>
 						</tr>
 						<tr height="88px">
-							<td>
+							<td class="td_rl">
 								32<span id="p32"></span>
 							</td>
 							<td class="no_border"></td>
@@ -258,52 +242,50 @@
 							<td class="no_border"></td>
 							<td class="no_border"></td>
 							<td class="no_border"></td>
-							<td class=" board_up_down">20<span id="p20"></span>
+							<td class="td_rl">20<span id="p20"></span>
 							</td>
 						</tr>
 						<tr height="158px">
-							<td width="14%">
+							<td class="td_tb">
 								31<span id="p31"></span>
 							</td>
-							<td width="7.8%">
+							<td class="td_tb">
 								30<span id="p30"></span>
 							</td>
-							<td width="7.8%">
+							<td class="td_tb">
 								29<span id="p29"></span>
 							</td>
-							<td width="7.8%">
+							<td class="td_tb">
 								28<span id="p28"></span>
 							</td>
-							<td width="7.5%">
+							<td class="td_tb">
 								27<span id="p27"></span>
 							</td>
-							<td width="8%">
+							<td class="td_tb">
 								26<span id="p26"></span>
 							</td>
-							<td width="7.5%">
+							<td class="td_tb">
 								25<span id="p25"></span>
 							</td>
-							<td width="7.7%">
+							<td class="td_tb">
 								24<span id="p24"></span>
 							</td>
-							<td width="7.9%">
+							<td class="td_tb">
 								23<span id="p23"></span>
 							</td>
-							<td width="7.7%">
+							<td class="td_tb">
 								22<span id="p22"></span>
 							</td>
-							<td width="14%">
+							<td class="td_tb">
 								21<span id="p21"></span>
 							</td>
 						</tr>
 					</table>
+					<hr>
 				</div>
 			</div>
 
 		</div>
-
-
-
 	</div>
 </body>
 </html>

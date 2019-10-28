@@ -1,0 +1,12 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "plugins": {
+    "jquery-ui1-12": {
+      
+    }
+  }
+}
