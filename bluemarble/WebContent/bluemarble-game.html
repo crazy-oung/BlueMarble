@@ -20,19 +20,20 @@
 <div class="boaard_floor"><!-- 게임페이지 시작 -->
 	
 	<div class="container" align="center">
+		<!-- 게임 타이틀 -->
 		<h4 style="margin: 10px;"><b class="text-primary">BLUE MARBLE</b></h4 >
+		<!-- 주사위 란 -->
 		<p class="interface form-inline">
 			<input id="dice1" class="form-control" type="text" style="width: 40px">
 			<input id="dice2" class="form-control" type="text" style="width: 40px"> <b>주사위 결과-</b>
-			
 			<button id="play" type="button" class="btn btn-primary"><b>굴려 🎲 굴려!</b></button>
 			<b>-이동 지점</b> <input id="point" class="form-control" type="text" style="width: 45px">
 		</p>
-
+		<!-- 보드  -->
 		<div class="marble_board" align="center">
 			<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px;">
-				<table class="table" style="text-align: center; color:tomato; font-weight: bold;">
-					<tr height="158px">
+				<table class="table" style="text-align: center; color: tomato; font-weight: bold;">
+					<tr height="160px">
 						<td class="td_tb no_border">
 							21<span id="p21"></span>
 						</td>
@@ -72,8 +73,44 @@
 						<td class="td_rl no_border">
 							20<span id="p20"></span>
 						</td>
-						<td class="no_border no_hover" colspan="9" rowspan="9">
-							<!-- 빈칸 행 열 합치기 & 클릭 비활성화   -->
+						<td class="no_border game_description" id="gameAlert" colspan="9" rowspan="9">
+							<br>
+							<!-- 빈칸 행 열 합치기 & 클릭 활성화 -> 게임시작시 비활성화   -->							
+							<!-- 게임시작 버튼 -->
+							<button id="start" class="btn btn-danger" data-toggle="modal" data-target="#startGame"><b> 게임 시작 ! </b></button>
+							<!-- 설명 -->
+							<h4 class="horses">
+								1p 🎠  2p 🚀  3p 🛫   4p 🚁
+							</h4>
+							<br>
+							<b>게임을 시작하려면 게임시작 버튼을 클릭클릭!</b>
+							<!-- 알림창들 -->
+							<div class="in_middle">								
+								<!-- 인원 설정 알림창 -->
+								<div id="startGame" class="modal fade" role="dialog">
+								  <div class="modal-dialog">				
+								    <!-- 알림창 내용-->
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal">&times;</button>
+								        <h4 class="modal-title text-primary">플레이 인원수를 골라요!</h4>
+								      </div>
+								      <div class="modal-body inline">
+								        <p>
+								        	<button type="button" class="btn btn-warning" data-dismiss="modal" id="2people" data-target="#noticeGamer">2인 🙋🙋‍♂</button> &nbsp;
+								        	<button type="button" class="btn btn-success" data-dismiss="modal" id="3people">3인 🙋🙋‍♀🙋‍♂</button> &nbsp;
+								        	<button type="button" class="btn btn-primary" data-dismiss="modal" id="4people">4인 🙋🙋‍♀🙋‍♂🙋‍♂</button> &nbsp;
+								        </p> 
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelGame">안할래요</button>
+								      </div>
+								    </div>								
+								  </div>
+								</div><!-- 인원 알림창 끝 -->
+								
+							</div><!-- middle div end -->
+							
 						</td>
 						<td class="td_rl no_border">
 							32<span id="p32"></span>
@@ -150,7 +187,7 @@
 						</td>
 					</tr>
 					
-					<tr height="88px">
+					<tr height="92px">
 						<td class="td_rl no_border">
 							12<span id="p12"></span>
 						</td>
@@ -194,22 +231,31 @@
 						<td width="14%" class="td_tb no_border">
 							<span id="p1">
 								<b class="horses" id="1p">🎠</b>
+								<!--  2p~4p 말
 								<b class="horses" id="2p">🚀</b>
 								<b class="horses" id="3p">🛫</b>
-								<b class="horses" id="4p">🚁</b>
+								<b class="horses" id="4p">🚁</b> -->
 							</span>
 						</td>
 					</tr>
-				</table>
+				</table><!-- 보드 끝 -->
+	
+				
+				
 			</div>
 		</div>
+		
+		
+		
+		<!-- footer -->
 		<hr style="margin: 10px;"><!-- 구분선 -->	
 		<p class="text-dark">
 			BLUE MARBLE(자바스크립트 연습용. 비상업 용도. 부루마블과 똑같이 만들어 보기 ) 
 			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
 		</p>
 	</div>
-		
+	
+	
 </div><!-- 내용 끝 -->
 </body>
 </html>

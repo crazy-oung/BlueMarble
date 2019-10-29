@@ -1,0 +1,191 @@
+main {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.activate{
+	transform-style: preserve-3d;
+	transform: rotateX(0deg) rotateY(0deg) translateX(0);
+	animation-name: rotate;
+	animation-duration: 3s;
+	animation-timing-function: ease-in-out;
+}
+
+
+.dice-container{
+	cursor: pointer;
+}
+.dice {
+	width: 60px;
+	height: 60px;
+	position: relative;
+}
+.dice > div {
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	background: #F76331;
+}
+.dice span {
+	width: 8px;
+	height: 8px;
+	background: #fff;
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+}
+
+
+.dice .front {
+	transform: rotateY(0deg) translateZ(30px);	
+}
+.dice .front span:nth-child(1) {
+	top: 10px;
+	left: 12px;
+}
+.dice .front span:nth-child(2) {
+	top: 10px;
+	right: 12px;
+}
+.dice .front span:nth-child(3) {
+	top: 26px;
+	left: 12px;
+}
+.dice .front span:nth-child(4) {
+	top: 26px;
+	right: 12px;
+}
+.dice .front span:nth-child(5) {
+	bottom: 10px;
+	left: 12px;
+}
+.dice .front span:nth-child(6) {
+	bottom: 10px;
+	right: 12px;
+}
+
+
+.dice .back {
+	transform: rotateX(180deg) translateZ(30px);
+}
+.dice .back span {
+	top: 26px;
+	left: 26px;
+}
+
+
+.dice .right {
+  transform: rotateY(90deg) translateZ(30px);
+}
+.dice .right span:nth-child(1) {
+  top: 12px;
+  left: 12px;
+}
+.dice .right span:nth-child(2) {
+  top: 12px;
+  right: 12px;
+}
+.dice .right span:nth-child(3) {
+  top: 26px;
+  left: 26px;
+}
+.dice .right span:nth-child(4) {
+  bottom: 12px;
+  left: 12px;
+}
+.dice .right span:nth-child(5) {
+  bottom: 12px;
+  right: 12px;
+}
+
+
+.dice .left {
+  transform: rotateY(-90deg) translateZ(30px);
+}
+.dice .left span:nth-child(1) {
+  top: 12px;
+  right: 12px;
+}
+.dice .left span:nth-child(2) {
+  bottom: 12px;
+  left: 12px;
+}
+
+
+.dice .top {
+  transform: rotateX(90deg) translateZ(30px);
+}
+.dice .top span:nth-child(1) {
+  top: 12px;
+  right: 12px;
+}
+.dice .top span:nth-child(2) {
+  bottom: 12px;
+  left: 12px;
+}
+.dice .top span:nth-child(3) {
+  bottom: 26px;
+  left: 26px;
+}
+
+
+.dice .bottom {
+  transform: rotateX(-90deg) translateZ(30px);
+}
+.dice .bottom span:nth-child(1) {
+  top: 12px;
+  right: 12px;
+}
+.dice .bottom span:nth-child(2) {
+  top: 12px;
+  left: 12px;
+}
+.dice .bottom span:nth-child(3) {
+  bottom: 12px;
+  left: 12px;
+}
+.dice .bottom span:nth-child(4) {
+  bottom: 12px;
+  right: 12px;
+}
+
+
+.button {
+  position: fixed;
+  bottom: 20px;
+  background: #f76939;
+  padding: 20px 40px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #e35525;
+}
+
+
+@keyframes rotate{
+  0% {
+    transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+  }
+  35% {
+    transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+  }
+  45% {
+    transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+  }
+  65% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+  }
+  75% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+  }
+  100% {
+    transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+  }
+}
