@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>new title here</title>
+<link rel="stylesheet" href="./css/dice.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".dice-container").click(function() {
+		console.log("다이스 클릭!")
+		$(this).toggleClass("activate");
+	})
+})
+</script>
+</head>
+<body>
+<main>
+   <div class="dice-container">
+      <div class="dice">
+         <div class="front" value="6">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+         <div class="back" value="1">
+            <span></span>
+         </div>
+         <div class="right" value="5">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+         <div class="left" value="2">
+            <span></span>
+            <span></span>
+         </div>
+         <div class="top" value="3">
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+         <div class="bottom" value="4">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+      </div>
+   </div>
+   <div class="button">
+      <span>Toggle Second Keyframe</span>
+   </div>
+</main>
+</body>
+</html>

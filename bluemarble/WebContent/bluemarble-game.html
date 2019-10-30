@@ -18,72 +18,162 @@
 </head>
 <body>
 <div class="boaard_floor"><!-- 게임페이지 시작 -->
-	
-	<div class="container" align="center">
+
+	<div class="interface">
+		<!-- 플레이어 타이틀 -->
+		<h3 style="margin: 10px;"><b class="text-primary">PLAYERS</b></h3>
+		
+		<div class="btn btn-primary d-m">
+			<h4>플레이어 🎠 </h4>
+			<hr style="margin: 10px;"><!-- 구분선 -->	
+			<ul align="left">
+				<li>💸 : <span id="1pMoney">000</span> 원</li>
+				<li>🔁 : <span id="1pRound">000</span> 바퀴째</li>
+			</ul>
+		</div>
+		<br>
+		
+		<div class="btn btn-success d-m">
+			<h4>플레이어 🚀</h4>
+			<hr style="margin: 10px;"><!-- 구분선 -->	
+			<ul align="left">
+				<li>💸 : <span id="2pMoney">000</span> 원</li>
+				<li>🔁 : <span id="2pRound">000</span> 바퀴째</li>
+			</ul>
+		</div>
+		
+		<div class="btn btn-warning d-m">
+			<h4>플레이어 🛫</h4>
+			<hr style="margin: 10px;"><!-- 구분선 -->	
+			<ul align="left">
+				<li>💸 : <span id="3pMoney">000</span> 원</li>
+				<li>🔁 : <span id="3pRound">000</span> 바퀴째</li>
+			</ul>
+		</div>
+		 
+		<div class="btn btn-danger d-m">
+			<h4>플레이어 🚁</h4>
+			<hr style="margin: 10px;"><!-- 구분선 -->	
+			<ul align="left">
+				<li>💸 : <span id="4pMoney">000</span> 원</li>
+				<li>🔁 : <span id="4pRound">000</span> 바퀴째</li>
+			</ul>
+		</div>
+		
+		<!-- 주사위 란 -->
+		<p class="form-inline btn btn-primary">
+			<input id="dice1" class="form-control" type="text" style="width: 40px">
+			<input id="dice2" class="form-control" type="text" style="width: 40px">
+			<b>결과</b>
+			<button id="play" type="button" class="btn btn-success"><h4>굴려 🎲 굴려!</h4></button>
+			<b> 이동지점 </b> 
+			<input id="point" class="form-control" type="text" style="width: 45px">
+		</p><!-- 주사위 끝 -->
+		
+	</div>
+		
+	<div class="game-board">		
 		<!-- 게임 타이틀 -->
 		<h4 style="margin: 10px;"><b class="text-primary">BLUE MARBLE</b></h4 >
-		<!-- 주사위 란 -->
-		<p class="interface form-inline">
-			<input id="dice1" class="form-control" type="text" style="width: 40px">
-			<input id="dice2" class="form-control" type="text" style="width: 40px"> <b>주사위 결과-</b>
-			<button id="play" type="button" class="btn btn-primary"><b>굴려 🎲 굴려!</b></button>
-			<b>-이동 지점</b> <input id="point" class="form-control" type="text" style="width: 45px">
-		</p>
 		<!-- 보드  -->
 		<div class="marble_board" align="center">
 			<div style="padding-left: 14px; padding-right: 18px; padding-top: 14px;">
-				<table class="table" style="text-align: center; color: tomato; font-weight: bold;">
+				<table class="table" style="text-align: center; color: tomato;">
 					<tr height="160px">
 						<td class="td_tb no_border">
-							21<span id="p21"></span>
+							<span id="p21"></span>
 						</td>
 						<td class="td_tb no_border">
-							22<span id="p22"></span>
+							<span id="p22"></span>
 						</td>
 						<td class="td_tb no_border">
-							23<span id="p23"></span>
+							<span id="p23"></span>
 						</td>
 						<td class="td_tb no_border">
-							24<span id="p24"></span>
+							<span id="p24"></span>
 						</td>
 						<td class="td_tb no_border">
-							25<span id="p25"></span>
+							<span id="p25"></span>
 						</td>
 						<td class="td_tb no_border">
-							26<span id="p26"></span>
+							<span id="p26"></span>
 						</td>
 						<td class="td_tb no_border">
-							27<span id="p27"></span>
+							<span id="p27"></span>
 						</td>
 						<td class="td_tb no_border">
-							28<span id="p28"></span>
+							<span id="p28"></span>
 						</td>
 						<td class="td_tb no_border">
-							29<span id="p29"></span>
+							<span id="p29"></span>
 						</td>
 						<td class="td_tb no_border">
-							30<span id="p30"></span>
+							<span id="p30"></span>
 						</td>
 						<td class="td_tb no_border">
-							31<span id="p31"></span>
+							<span id="p31"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							20<span id="p20"></span>
+							<span id="p20"></span>
 						</td>
 						<td class="no_border game_description" id="gameAlert" colspan="9" rowspan="9">
 							<br>
 							<!-- 빈칸 행 열 합치기 & 클릭 활성화 -> 게임시작시 비활성화   -->							
-							<!-- 게임시작 버튼 -->
-							<button id="start" class="btn btn-danger" data-toggle="modal" data-target="#startGame"><b> 게임 시작 ! </b></button>
+							
 							<!-- 설명 -->
-							<h4 class="horses">
-								1p 🎠  2p 🚀  3p 🛫   4p 🚁
-							</h4>
+							<h4 class="horses"><b>
+								1p 🎠  2p 🚀  3p 🛫   4p 🚁 
+							</b></h4>
+							<div align="left">
+							<p> 초기 지급 비용은 4인 기준 283만원 입니다.</p>
+							<p>플레이어가 2인 일 경우 비용은 나눠 가지는 비용은 2배가 됩니다.</p>	
+							<p>두개의 주사위 두 개를 던져 나온 눈의 합만큼 진행합니다. 두개 주사위가 같은 수가 나오면  더블! 한번 더 굴리 실 수 있습니다.</p>
+							
+							<p>빈 영토에 멈추면 땅을 살 수 있습니다. <br> 첫 바퀴에는 땅과 별장까지만, 두번째 바퀴에는 빌딩, 세번째 바퀴에는 호텔을 지을 수 있습니다.</p>
+							<p>타 플레이어의 영토에 멈추면 플레이어에게 해당 통행료를 지불해야 합니다.</p>
+							
+							<p>특수 칸에 멈추면 지시사항을 따라야 한다.
+							
+							한 바퀴를 돌 때마다 일정 금액을 지급 받는다.
+							
+							우주여행 칸에 멈추면 콜롬비아호를 탈지 안 탈지를 선택할 수 있는데 타면 다음 턴에 말판 위의 원하는 곳을 어디든 갈 수 있다. 
+							다만, 다음과 같은 조건이 있다.
+							  콜롬비아호를 타게 되면 통행료를 내야 하는데, 콜롬비아호를 구입한 사람에게 낸다. 
+							  만약 콜롬비아호 증서를 가지고 있는 사람이 없을 경우 은행에 통행료를 낸다. 
+							  자신이 콜롬비아호의 증서를 가지고 있거나 황금열쇠를 뽑아서 콜롬비아호를 타는 경우는 통행료가 면제된다. 
+							  후술할 우대권 사용 범위 확대 룰을 적용하면 우대권으로 대신 내는 것도 가능.
+							  우주여행 칸으로는 다시 날아갈 수 없다. 게임 후반부에 콜롬비아호 증서를 가진 사람이 콜롬비아호를 타고 우주여행 칸으로 간 
+							  다음 또 콜롬비아호를 타고 또 우주여행 칸으로 가는 식으로 무한루프 타는 꼼수를 방지하기 위함이다.
+							
+							
+							
+							1바퀴 이후 시작지점 밟으면 소유한 땅중 1개 선택하여 건물 짓기(허용되는 건물까지)
+							
+							대출 1회 100만원(1회 한정) ?턴안에 대출 상환 (미상환시 파산)
+							
+							땅을 팔경우 땅 구입비용 및 건물 구입비용 전부 상환
+							
+							개인전 or 팀전(2:2)
+							
+							무인도에서 주사위가 더블이 나와야 탈출합니다.더블이 나오면 그 다음 턴에 이동합니다.
+							더블이 나오지 못하면 최대 3턴까지 갇혀있습니다.
+							
+							1바퀴(출발지점) 완주시 월급 20만원(?만원)
+							
+							<p>상대방에게 지불할 금액이 부족하면 땅과 건물을 은행에 매각 또는 토지 증서를 상대방에게 인계해야 합니다. <small>(증서를 인계할 경우 차액은 받을 수 없습니다.)</small></p>		
+							<p>플레이어를 불문하고 3회 분할 납부(30, 30, 40)로 구매하는 방식. 서울에 3번째로 도착한, 마지막 40만원 지불자가 소유주</p>
+							
+							<h4>승리 조건</h4>
+							<p>제한된 턴수 가 끝나면 자산이 많은 사람이 승리! <small>(자산기준 : 땅값 + 건물값 + 현재 보유자산)</small></p>
+							<p>또는 상대방 전원이 파산된 경우</p>
+							</div>
 							<br>
-							<b>게임을 시작하려면 게임시작 버튼을 클릭클릭!</b>
+							<p>게임을 시작하려면 게임시작 버튼을 클릭클릭! </b>
+							<!-- 게임시작 버튼 -->
+							<button id="start" class="btn btn-danger" data-toggle="modal" data-target="#startGame"><b class="text-dark"> 게임 시작 ! </b></button>
 							<!-- 알림창들 -->
 							<div class="in_middle">								
 								<!-- 인원 설정 알림창 -->
@@ -113,120 +203,120 @@
 							
 						</td>
 						<td class="td_rl no_border">
-							32<span id="p32"></span>
+							<span id="p32"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							19<span id="p19"></span>
+							<span id="p19"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							33<span id="p33"></span>
+							<span id="p33"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							18<span id="p18"></span>
+							<span id="p18"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							34<span id="p34"></span>
+							<span id="p34"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							17<span id="p17"></span>
+							<span id="p17"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							35<span id="p35"></span>
+							<span id="p35"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							16<span id="p16"></span>
+							<span id="p16"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							36<span id="p36"></span>
+							<span id="p36"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							15<span id="p15"></span>
+							<span id="p15"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							37<span id="p37"></span>
+							<span id="p37"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							14<span id="p14"></span>
+							<span id="p14"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							38<span id="p38"></span>
+							<span id="p38"></span>
 						</td>
 					</tr>
 					
 					<tr height="88px">
 						<td class="td_rl no_border">
-							13<span id="p13"></span>
+							<span id="p13"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							39<span id="p39"></span>
+							<span id="p39"></span>
 						</td>
 					</tr>
 					
 					<tr height="92px">
 						<td class="td_rl no_border">
-							12<span id="p12"></span>
+							<span id="p12"></span>
 						</td>
 						
 						<td class="td_rl no_border">
-							40<span id="p40"></span>
+							<span id="p40"></span>
 						</td>
 					</tr>
 				
-					<tr height="158px">
+					<tr height="158px" style="margin-bottom: 14px">
 						<td width="14%" class="td_tb no_border">
-							11<span id="p11"></span>
+							<span id="p11"></span>
 						</td>
 						<td width="7.7%" class="td_tb no_border">
-							10<span id="p10"></span>
+							<span id="p10"></span>
 						</td>
 						<td width="7.9%" class="td_tb no_border">
-							9<span id="p9"></span>
+							<span id="p9"></span>
 						</td>
 						<td width="7.7%" class="td_tb no_border">
-							8<span id="p8"></span>
+							<span id="p8"></span>
+						</td>
+						<td width="7.7%" class="td_tb no_border">
+							<span id="p7"></span>
+						</td>
+						<td width="7.9%" class="td_tb no_border">
+							<span id="p6"></span>
 						</td>
 						<td width="7.5%" class="td_tb no_border">
-							7<span id="p7"></span>
-						</td>
-						<td width="8%" class="td_tb no_border">
-							6<span id="p6"></span>
-						</td>
-						<td width="7.5%" class="td_tb no_border">
-							5<span id="p5"></span>
+							<span id="p5"></span>
 						</td>
 						<td width="7.8%" class="td_tb no_border">
-							4<span id="p4"></span>
+							<span id="p4"></span>
 						</td>
 						<td width="7.8%" class="td_tb no_border">
-							3<span id="p3"></span>
+							<span id="p3"></span>
 						</td>
 						<td width="7.8%" class="td_tb no_border">
-							2<span id="p2"></span>
+							<span id="p2"></span>
 						</td>
 						<td width="14%" class="td_tb no_border">
 							<span id="p1">
@@ -239,9 +329,7 @@
 						</td>
 					</tr>
 				</table><!-- 보드 끝 -->
-	
-				
-				
+				<p id="playersTurn"></p>
 			</div>
 		</div>
 		
@@ -249,8 +337,8 @@
 		
 		<!-- footer -->
 		<hr style="margin: 10px;"><!-- 구분선 -->	
-		<p class="text-dark">
-			BLUE MARBLE(자바스크립트 연습용. 비상업 용도. 부루마블과 똑같이 만들어 보기 ) 
+		<p>
+			BLUE MARBLE(자바스크립트 연습용. 부루마블과 똑같이 만들어 보기 ) 
 			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
 		</p>
 	</div>
