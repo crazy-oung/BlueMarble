@@ -54,8 +54,6 @@ $(document).ready(function() {
 			alert("게임 종료!! 승자는 누구입니다.");
 			return;
 		}
-			
-		
 		
 		$("#p"+point[0][state]).children("b").remove("#"+(state+1)+"p");
 		console.log("일단 지우고 append")
