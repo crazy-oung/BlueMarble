@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>BlueMarble</title>
+<title>TEST Page</title>
 <!-- 부트스트랩 3 -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,7 +30,8 @@
 				<li>💸 : <span id="1pMoney">000</span> 만원</li>
 				<li>🔁 : <span id="1pRound">000</span> 바퀴째</li>
 			</ul>
-		</div> 
+		</div>
+		<br>
 		
 		<div class="btn btn-success list-margin">
 			<h4>플레이어 🚀</h4>
@@ -40,8 +41,7 @@
 				<li>🔁 : <span id="2pRound">000</span> 바퀴째</li>
 			</ul>
 		</div>
-		 
-		
+		<br>
 		<div class="btn btn-warning list-margin">
 			<h4>플레이어 🛫</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -50,8 +50,8 @@
 				<li>🔁 : <span id="3pRound">000</span> 바퀴째</li>
 			</ul>
 		</div>
-		 
-		 
+		<br>
+		
 		<div class="btn btn-danger list-margin">
 			<h4>플레이어 🚁</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -60,20 +60,22 @@
 				<li>🔁 : <span id="4pRound">000</span> 바퀴째</li>
 			</ul>
 		</div>
-		 
 		
 		<!-- 주사위 란 -->
-		<p class="form-inline btn btn-primary list-margin">
+		<div class="form-inline btn btn-primary list-margin">
 			<input id="dice1" class="form-control" type="text" style="width: 40px">
 			<input id="dice2" class="form-control" type="text" style="width: 40px">
 			<b>결과</b>
 			<button id="play" type="button" class="btn btn-success"><h4>굴려 🎲 굴려!</h4></button>
 			<b> 이동지점 </b> 
 			<input id="point" class="form-control" type="text" style="width: 45px">
-		</p><!-- 주사위 끝 -->
+		</div><!-- 주사위 끝 -->
 		
-		<h4 class="text-danger" id="playersTurn">다음은 누구차례?!</h4>
-		
+		<br>
+		<!-- 주사위를 굴릴 플레이어 표시 -->
+		<div class="btn list-margin text-danger" align="center">
+			<h4><p id="playersTurn">다음은 누구차례?</p></h4>
+		</div>
 	</div>
 		
 	<div class="game-board">		
@@ -129,7 +131,7 @@
 							
 							<!-- 설명 -->
 							<h4 class="horses"><b>1p 🎠  2p 🚀  3p 🛫   4p 🚁</b></h4>							
-							<h5 class="text-primary"><b>전체 화면으로 플레이할 것을 적극 권장합니다. </b></h5>
+							<h3 class="text-primary"><b>전체 화면으로 플레이할 것을 적극 권장합니다. </b></h3>
 							
 							<div align="left">							
 							<p> 초기 지급 비용은 4인 기준 283만원 입니다.
@@ -160,11 +162,12 @@
 							<p>상대방에게 지불할 금액이 부족하면 땅과 건물을 은행에 매각 또는 토지 증서를 상대방에게 인계해야 합니다. <small>(증서를 인계할 경우 차액은 받을 수 없습니다.)</small></p>		
 							<p>플레이어를 불문하고 3회 분할 납부(30, 30, 40)로 구매하는 방식. 서울에 3번째로 도착한, 마지막 40만원 지불자가 소유주</p>
 							
-							<h4>승리 조건</h4>
+							<h3>승리 조건</h3>
 							<p>제한된 턴수(6턴)이 끝나면 자산이 많은 사람이 승리! <small>(자산기준 : 땅값 + 건물값 + 현재 보유자산)</small></p>
 							<p>또는 상대방 전원이 파산된 경우</p>
-							</div> 
-							<b>게임을 시작하려면 게임시작 버튼을 클릭클릭! </b>
+							</div>
+							<br>
+							<p>게임을 시작하려면 게임시작 버튼을 클릭클릭! </b>
 							<!-- 게임시작 버튼 -->
 							<button id="start" class="btn btn-danger" data-toggle="modal" data-target="#startGame"><b class="text-dark"> 게임 시작 ! </b></button>
 							<!-- 알림창들 -->
@@ -326,17 +329,17 @@
 			</div>
 		</div>
 		
+		<!-- dma -->
 		
 		
-		<!-- footer -->
-		<hr style="margin: 10px;"><!-- 구분선 -->	
-		<p>
-			BLUE MARBLE(자바스크립트 연습용. 부루마블과 똑같이 만들어 보기 ) 
-			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
-		</p>
 	</div>
-	
-	
+	<!-- footer -->
+	<hr style="margin: 10px;"><!-- 구분선 -->	
+	<p>
+		BLUE MARBLE(자바스크립트 연습용. 부루마블과 똑같이 만들어 보기 ) 
+		<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
+	</p>
+
 </div><!-- 내용 끝 -->
 </body>
 </html>

@@ -5,14 +5,14 @@
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: 100%;
-	border-radius: 15px;
+	border-radius: 20px;
 	padding-bottom:1px;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 	background-color: #409400;
 	width: 1140px;
 }
 .game_description{
-	background: rgba(0,0,0,0.8) !important;
+	background: rgba(0,0,0,0.9) !important;
 	border-radius: 20px;
 }
 .in_middle{
@@ -31,6 +31,7 @@ td:hover  {
 .horses{
 	font-size: xx-large;
 	text-shadow: 0px 0px 10px rgba(51, 51, 0);
+	cursor: pointer;
 }
 
 .td_tb{
@@ -54,26 +55,28 @@ td:hover  {
 }
 
 .interface{
-	margin-top : 10%;
+	margin-top : 9%;
 	padding : 7px;
 	float: right;
 	background: rgba(0,0,0,0.75);
 	width: 25%;
-	height: 65vh;
+	height: 72vh;
 	text-align: center;
 	border-radius: 15px 0px 0px 15px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, .03);
 }
 
 div.interface:hover {
+	margin-top : 8.8%;
 	box-shadow: 0px 0px 20px rgba(100,100,100);
 	width: 26%;
-	height: 68vh;
 }
-.d-m{
+
+.list-margin{
 	margin: 4px;
-	width: 85%;
+	width: 88%;
 }
+
 .game-board{
 	display:block;
 	padding-top:none !important;
@@ -95,4 +98,8 @@ html,body{
 }
 ul{
 	list-style: none;
+}
+::selection {
+	background: #ffff00;
+	color: 	#080808;
 }
