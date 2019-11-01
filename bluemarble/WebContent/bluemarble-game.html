@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>BlueMarble</title>
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+
 <!-- 부트스트랩 3 -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,12 +21,23 @@
 <script src="./js/game.js"></script>
 </head>
 <body>
+
 <div class="boaard_floor" ><!-- 게임페이지 시작 -->
 
 	<div class="interface">
 		<!-- 플레이어 타이틀 -->
 		<h2 style="margin: 10px;"><b class="text-primary">PLAYERS</b></h2>
 		
+		<!-- 진행 상황 -->
+		<p class="form-inline text-danger list-margin" style="margin-left:5%">
+			<b>결과</b>
+			<input id="dice1" class="form-control" type="text" style="width: 40px">
+			<input id="dice2" class="form-control" type="text" style="width: 40px">			
+			<b> 이동지점 </b> 
+			<input id="point" class="form-control" type="text" style="width: 45px">
+		</p>
+		
+		<!-- 플레이어 1 -->
 		<div class="btn btn-primary list-margin">
 			<h4>플레이어 🎠 </h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -32,6 +47,7 @@
 			</ul>
 		</div> 
 		
+		<!-- 플레이어 2 -->
 		<div class="btn btn-success list-margin">
 			<h4>플레이어 🚀</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -41,7 +57,7 @@
 			</ul>
 		</div>
 		 
-		
+		<!-- 플레이어 3 -->
 		<div class="btn btn-warning list-margin">
 			<h4>플레이어 🛫</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -51,7 +67,7 @@
 			</ul>
 		</div>
 		 
-		 
+		 <!-- 플레이어 4 -->
 		<div class="btn btn-danger list-margin">
 			<h4>플레이어 🚁</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -61,24 +77,15 @@
 			</ul>
 		</div>
 		 
-		
-		<!-- 주사위 란 -->
-		<p class="form-inline btn btn-primary list-margin">
-			<input id="dice1" class="form-control" type="text" style="width: 40px">
-			<input id="dice2" class="form-control" type="text" style="width: 40px">
-			<b>결과</b>
-			<button id="play" type="button" class="btn btn-success"><h4>굴려 🎲 굴려!</h4></button>
-			<b> 이동지점 </b> 
-			<input id="point" class="form-control" type="text" style="width: 45px">
-		</p><!-- 주사위 끝 -->
-		
+		<button id="gotoIsland" type="button" class="btn btn-primary list-margin"><h4>무인도로!</h4></button>
+		<button id="play" type="button" class="btn btn-success list-margin"><h4>굴려 🎲 굴려!</h4></button>
 		<h4 class="text-danger" id="playersTurn">다음은 누구차례?!</h4>
 		
 	</div>
 		
 	<div class="game-board">		
 		<!-- 게임 타이틀 -->
-		<h4 style="margin-left: 28%;"><b class="text-primary">BLUE MARBLE</b></h4 >
+		<h4 style="margin-left: 28%; margin-top : 0;"><b class="text-primary">BLUE MARBLE</b></h4 >
 		
 		<!-- 보드  -->
 		<div class="marble_board" align="center">
@@ -230,7 +237,7 @@
 						</td>
 					</tr>
 					
-					<tr height="88px">
+					<tr height="89px">
 						<td class="td_rl no_border">
 							<span id="p16"></span>
 						</td>
@@ -270,7 +277,7 @@
 						</td>
 					</tr>
 					
-					<tr height="92px">
+					<tr height="90px">
 						<td class="td_rl no_border">
 							<span id="p12"></span>
 						</td>
@@ -280,7 +287,7 @@
 						</td>
 					</tr>
 				
-					<tr height="158px" style="margin-bottom: 14px">
+					<tr height="156px" style="margin-bottom: 14px">
 						<td width="14%" class="td_tb no_border">
 							<span id="p11"></span>
 						</td>
@@ -308,10 +315,10 @@
 						<td width="7.8%" class="td_tb no_border">
 							<span id="p3"></span>
 						</td>
-						<td width="7.8%" class="td_tb no_border">
+						<td width="7.9%" class="td_tb no_border">
 							<span id="p2"></span>
 						</td>
-						<td width="14%" class="td_tb no_border">
+						<td width="13.9%" class="td_tb no_border">
 							<span id="p1">
 								<b class="horses" id="1p">🎠</b>
 								<!--  2p~4p 말
@@ -330,10 +337,11 @@
 		
 		<!-- footer -->
 		<hr style="margin: 10px;"><!-- 구분선 -->	
-		<p>
+		<p style="margin-bottom : 0;">
 			BLUE MARBLE(자바스크립트 연습용. 부루마블과 똑같이 만들어 보기 ) 
 			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
 		</p>
+		
 	</div>
 	
 	
