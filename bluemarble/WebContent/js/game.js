@@ -1,3 +1,4 @@
+// 전역 변수 선언 
 // 플레이어별 말 목록
 let player=["<b class='horses' id='1p'>🎠</b>",
 			"<b class='horses' id='2p'>🚀</b>",
@@ -12,6 +13,7 @@ let point = [[1, 1, 1, 1], [1,1,1,1]];
 let turn = 0;
 // 인원수
 let maxState = 0;
+// 플레이어 차례
 let state = 0;
 //무인도에 있을 때 셀 턴수 무인도 도착시 0으로 초기화 
 let turnCount = [0, 0, 0, 0];
@@ -59,44 +61,46 @@ let lands = [[	"출발지점!",
 				]
 ];
 
-$(document).ready(function() {
-	// 준비 완료 
-	console.log("ready");
 
+// 게임 진행 코드 시작
+$(document).ready(function() {
+	
+	// 준비 
+	console.log("document ready");
+	$.getScript("/bluemarble/js/functions.js");	
+	console.log("환영합니다.");
+	
 	// 2인 플레이 
 	$("#2people").click( function() {		
 		let player = maxState = 1;
-		console.log("2인 스타트!");
-		alert("2인 스타트!");
 		gameStart(player);
 	});
 	
 	// 3인 플레이
 	$("#3people").click( function() {
 		let player = maxState = 2;
-		console.log("3인 스타트!");
-		alert("3인 스타트!");
 		gameStart(player);
 	});
 	
 	// 4인 플레이
 	$("#4people").click( function() {
 		let player = maxState = 3;
-		console.log("4인 스타트!");
-		alert("4인 스타트!");
 		gameStart(player);
 	});
 	
 	
+	
+	
 	// 플레이 버튼 클릭 click!!!!
 	$("#play").click( function() {		
-		if(turn>50){
-			alert("게임 종료!! 승자는 누구입니다.");
-			return;
-		}
-		
-		
 		console.log((state+1)+"p 가 주사위 던짐!");
+		// 턴 검사
+//		if(turn>20){
+//			alert("게임 종료!! 승자는 누구입니다.");
+//			return;
+//		}
+		
+		
 		// 두개 주사위 굴리기
 		let ran1 = Math.floor((Math.random() * 6)+1);	//1~6
 		let ran2 = Math.floor((Math.random() * 6)+1);	//1~6
@@ -106,109 +110,42 @@ $(document).ready(function() {
 		$("#dice2").val(ran2);		
 		console.log("현재 현황",point[1])
 		
-		// 무인도에 있는지 검사 
-		if(point[0][state] == 11){
-			console.log("무인도에 있습니다. 검사합니다. ")
-			
-			// 더블이 아니면 리턴
-			if(ran1 != ran2 && turnCount[state] <4){
-				turnCount[state]++;
-				////// 표시!!
-				if(state > maxState){
-					state = 0; 
-					turn ++;
-					console.log("다음턴! ",turn,"state = "+state);
-				}
-				// 다음 플레이어로 타자 이동
-				state ++;
-				return;
-			}
-			turnCount[state] =0;
-			console.log("더블이 나오거나 3턴째를 지났음 ㅎㅎㅎ");
-		}
 		
-		$("#p"+point[0][state]).children("b").remove("#"+(state+1)+"p");
-		console.log("erase and move")
-		// 두 주사위의 수 합 
-		let sum = ran1+ran2;
-		// 40이 넘으면 다시 1부터 
-		if (point[0][state] + sum < 41) {
-			point[1][state] = point[0][state] + sum;
-		} else {
-			point[1][state] = point[0][state] + sum - 40;
-		}
-
-		console.log("결과:",point[1][state])
-		$("#point").val(point[1][state]);
 		
-		// 말을 이동시킵니다.
-		let afterId = "#p" + point[1][state];
-		$(afterId).append(player[state]);
-		point[0][state] = point[1][state];
+		
+		// 게임 진행 
+		letsMove(ran1, ran2);
+		
+	});
+	
+	
+	
+	//무인도 테스트용 버튼	
+	$("#gotoIsland").click( function() {		
+		console.log((state+1)+"p 가 주사위 던짐!");
+		// 턴 검사
+//		if(turn>20){
+//			alert("게임 종료!! 승자는 누구입니다.");
+//			return;
+//		}
+		
+		
+		// 두개 주사위 굴리기
+		let ran1 = 1;	//1~6
+		let ran2 = 1;	//1~6
+		
+		// 수 랜덤으로 뽑아 value값에 넣기
+		$("#dice1").val(ran1);
+		$("#dice2").val(ran2);		
+		console.log("현재 현황",point[1])
 		
 		
 		
 		
-		$("#playersTurn").empty();
-		$("#playersTurn").append("플레이어"+(state+1)+"님 차례입니다!");
-		
-		// 무인도 도착시 더블 효과 실행 안함. 
-		if(point[1][state] == 11 ){
-			console.log("!!!무인도!!!");
-			alert("무인도에요!")
-			turnCount[state]++;
-			console.log(turnCount[state]+"턴째! 무인도에 서식중 ..");
-			if(turnCount[state]>3){
-				turnCount[state]=0;
-				
-			}
-			return;
-		}
-		
-		// 더블이면 한번 더 
-		if(ran1 == ran2){
-			// alert("더블! 한번 더 굴릴 수 있어요!")
-			return;
-		}
-		state++;
-		if(state >= maxState){
-			state = 0; 
-			turn ++;
-			console.log("다음턴! ",turn,"state = "+state);
-		}
+		// 게임 진행 
+		letsMove(ran1, ran2);
 		
 	});
 	
 })	
 
-function buy(n){
-	
-}
-
-
-
-
-//게임 시작 
-function gameStart(players) {
-	console.log("게임 스타트!!! ")
-	$("#gameAlert").addClass("no_hover");
-//	console.log(this)	
-	$("span").empty();
-	if(players == 1){
-		money = [ (283*2) , (283*2), 0, 0];
-	}else if(players == 3){
-		money = [ 283 , 283, 283, 283];
-	}else{
-		money = [ 283 , 283, 283, 0];
-	}
-	for (var i = 0; i <= players; i++) {
-//		console.log(player[i]);
-		$("#p1").append(player[i]);
-		$("#"+(i+1)+"pMoney").text(money[i])
-		$("#"+(i+1)+"pRound").text(round[i])
-	}
-	//초기화
-	state = turn = turnCount = 0;
-	point = [[1, 1, 1, 1], [1,1,1,1]];
-	
-}
