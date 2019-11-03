@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>BlueMarble</title>
-<!-- 파비콘 -->
+<!-- 파비콘 Icon made by Freepik from www.flaticon.com -->
 <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 <link rel="icon" href="./favicon.ico" type="image/x-icon">
 
@@ -21,7 +21,64 @@
 <script src="./js/game.js"></script>
 </head>
 <body>
-
+	<!-- 알림 창들 ~ -->
+		<!-- 건물 구입 및 통행료 부과 창 -->
+		  <div class="modal fade in_middle" id="landConfirm" role="dialog">
+		    <div class="modal-dialog modal-lg">		    
+		      <!-- 대지 통행료 및 대지 구입 질문 창 내용  -->
+		      <div class="modal-content">
+		        <div class="modal-header" style="padding:35px 50px;">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+		        </div>
+		        <div class="modal-body" style="padding:40px 50px;">
+		          <form role="form">
+		            <div class="form-group">
+		              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+		              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+		            </div>
+		            <div class="form-group">
+		              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+		              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+		            </div>
+		            <div class="checkbox">
+		              <label><input type="checkbox" value="" checked>Remember me</label>
+		            </div>
+		              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+		          </form>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		          <p>Not a member? <a href="#">Sign Up</a></p>
+		          <p>Forgot <a href="#">Password?</a></p>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div> <!-- 건물 알림창 끝 -->
+		  
+		  <!-- 인원설정창 -->
+			<div id="startGame" class="modal fade" role="dialog" align="center">
+			  <div class="modal-dialog">				
+			    <!-- 알림창 내용-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h3 class="modal-title text-primary bold">플레이 인원수를 골라요!</h3>
+			      </div>
+			      <div class="modal-body inline" style="margin-top:15px;margin-bottom:15px">
+		        	<button type="button" class="btn btns_w_mar btn-warning" data-dismiss="modal" id="2people">2인 🙋🙋‍♂</button>
+		        	<button type="button" class="btn btns_w_mar btn-success" data-dismiss="modal" id="3people">3인 🙋🙋‍♀🙋‍♂</button> 
+		        	<button type="button" class="btn btns_w_mar btn-primary" data-dismiss="modal" id="4people">4인 🙋🙋‍♀🙋‍♂🙋‍♂</button> 		      
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-lg btn-default" data-dismiss="modal" id="cancelGame">안할래요</button>
+			      </div>
+			    </div>								
+			  </div>
+			</div><!-- 인원 알림창 끝 -->
+		<!-- end of model codes >< these dose not show off at the start hehe-->
+		
 <div class="boaard_floor" ><!-- 게임페이지 시작 -->
 
 	<div class="interface">
@@ -85,7 +142,7 @@
 		
 	<div class="game-board">		
 		<!-- 게임 타이틀 -->
-		<h4 style="margin-left: 28%; margin-top : 0;"><b class="text-primary">BLUE MARBLE</b></h4 >
+		<h4 style="margin-left: 28%; margin-top : 0;"><b class="text-primary">👻BLUE MARBLE <img src="./favicon.ico"></b></h4>
 		
 		<!-- 보드  -->
 		<div class="marble_board" align="center">
@@ -141,7 +198,7 @@
 							<div align="left">							
 							<p> 초기 지급 비용은 4인 기준 283만원 입니다.
 							<br>플레이어가 2인 일 경우 비용은 나눠 가지는 비용은 2배가 됩니다.</p>	
-							<p>한 바퀴를 돌때 마다  <b>월급 20만원</b>을 지급받습니다.</p>
+							<p>한 바퀴를 돌때 마다  <b class="text-warning">월급 20만원</b>을 지급받습니다.</p>
 							<p>두개의 주사위 두 개를 던져 나온 눈의 합만큼 진행합니다. 두개 주사위가 같은 수가 나오면  더블! 한번 더 굴리 실 수 있습니다.</p>
 							
 							<p>빈 영토에 멈추면 땅을 살 수 있습니다. <br> 첫 바퀴에는 땅과 별장까지만, 두번째 바퀴에는 빌딩, 세번째 바퀴에는 호텔을 지을 수 있습니다.
@@ -167,39 +224,14 @@
 							<p>상대방에게 지불할 금액이 부족하면 땅과 건물을 은행에 매각 또는 토지 증서를 상대방에게 인계해야 합니다. <small>(증서를 인계할 경우 차액은 받을 수 없습니다.)</small></p>		
 							<p>플레이어를 불문하고 3회 분할 납부(30, 30, 40)로 구매하는 방식. 서울에 3번째로 도착한, 마지막 40만원 지불자가 소유주</p>
 							
-							<h4>승리 조건</h4>
+							<h4 class="text-warning bold">승리 조건</h4>
 							<p>제한된 턴수(6턴)이 끝나면 자산이 많은 사람이 승리! <small>(자산기준 : 땅값 + 건물값 + 현재 보유자산)</small></p>
 							<p>또는 상대방 전원이 파산된 경우</p>
 							</div> 
 							<b>게임을 시작하려면 게임시작 버튼을 클릭클릭! </b>
 							<!-- 게임시작 버튼 -->
 							<button id="start" class="btn btn-danger" data-toggle="modal" data-target="#startGame"><b class="text-dark"> 게임 시작 ! </b></button>
-							<!-- 알림창들 -->
-							<div class="in_middle">								
-								<!-- 인원 설정 알림창 -->
-								<div id="startGame" class="modal fade" role="dialog">
-								  <div class="modal-dialog">				
-								    <!-- 알림창 내용-->
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title text-primary">플레이 인원수를 골라요!</h4>
-								      </div>
-								      <div class="modal-body inline">
-								        <p>
-								        	<button type="button" class="btn btn-warning" data-dismiss="modal" id="2people" data-target="#noticeGamer">2인 🙋🙋‍♂</button> &nbsp;
-								        	<button type="button" class="btn btn-success" data-dismiss="modal" id="3people">3인 🙋🙋‍♀🙋‍♂</button> &nbsp;
-								        	<button type="button" class="btn btn-primary" data-dismiss="modal" id="4people">4인 🙋🙋‍♀🙋‍♂🙋‍♂</button> &nbsp;
-								        </p> 
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelGame">안할래요</button>
-								      </div>
-								    </div>								
-								  </div>
-								</div><!-- 인원 알림창 끝 -->
-								
-							</div><!-- middle div end -->
+							
 							
 						</td>
 						<td class="td_rl no_border">
@@ -287,7 +319,7 @@
 						</td>
 					</tr>
 				
-					<tr height="156px" style="margin-bottom: 14px">
+					<tr height="157px" style="margin-bottom: 14px">
 						<td width="14%" class="td_tb no_border">
 							<span id="p11"></span>
 						</td>

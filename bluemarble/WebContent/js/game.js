@@ -1,3 +1,4 @@
+console.log()
 // 전역 변수 선언 
 // 플레이어별 말 목록
 let player=["<b class='horses' id='1p'>🎠</b>",
@@ -90,7 +91,6 @@ $(document).ready(function() {
 	
 	
 	
-	
 	// 플레이 버튼 클릭 click!!!!
 	$("#play").click( function() {		
 		console.log((state+1)+"p 가 주사위 던짐!");
@@ -111,7 +111,7 @@ $(document).ready(function() {
 		console.log("현재 현황",point[1])
 		
 		
-		
+		//
 		
 		// 게임 진행 
 		letsMove(ran1, ran2);

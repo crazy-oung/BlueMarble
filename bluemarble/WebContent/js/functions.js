@@ -23,6 +23,10 @@ function gameStart(players) {
 	state = turn = turnCount = 0;
 	point = [[1, 1, 1, 1], [1,1,1,1]];
 	turnCount = [0, 0, 0, 0];
+	
+	// n인 스타트 ! 알림
+	$("#playersTurn").empty();
+	$("#playersTurn").append("<strong class='text-danger'>"+(maxState+1)+"인 게임 스타트!!!</strong>");	
 }
 
 function rollDice() {
@@ -72,9 +76,17 @@ function atDesertIsland(ran1, ran2){
 	
 }
 
+function landAlert() {
+	
+}
+
 // 주사위 굴려 게임 진행하기
 function letsMove(ran1, ran2) {	
 	console.log("letsMove")
+	
+	landAlert();
+	 $("#landConfirm").modal();
+	
 	$("#playersTurn").empty();
 	$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님 차례입니다!");	
 	
@@ -103,9 +115,12 @@ function letsMove(ran1, ran2) {
 		point[0][state] = point[1][state];
 	}
 	
+	landAlert();
+	 $("#landConfirm").modal();
 	
-	
+	// 턴수 증가 
 	state++;
+	
 	// 더블이면 한번 더 
 	if(ran1 == ran2){
 		console.log("더블이다! 한번더!");
@@ -121,5 +136,7 @@ function letsMove(ran1, ran2) {
 		console.log("턴증가! ",turn,"state = "+state);
 	}
 }
+
+
 
 

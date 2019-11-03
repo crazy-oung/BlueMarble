@@ -2,7 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>TEST Page</title>
+<title>BlueMarble</title>
+<!-- 파비콘 Icon made by Freepik from www.flaticon.com -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+
 <!-- 부트스트랩 3 -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,14 +19,75 @@
 <link rel="stylesheet" href="./css/board.css">
 <!-- 게임 자바스크립트 코드 링크 -->
 <script src="./js/game.js"></script>
+<style type="text/css">
+.modal-header, h4, .close {
+   background-color: #5cb85c;
+   color:white !important;
+   text-align: center;
+   font-size: 30px;
+ }
+ .modal-footer {
+   background-color: #f9f9f9;
+ }
+</style>
+
 </head>
 <body>
+
 <div class="boaard_floor" ><!-- 게임페이지 시작 -->
 
 	<div class="interface">
 		<!-- 플레이어 타이틀 -->
 		<h2 style="margin: 10px;"><b class="text-primary">PLAYERS</b></h2>
+		<h2>Modal Login Example</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+		<!-- 진행 상황 -->
+		<p class="form-inline text-danger list-margin" style="margin-left:5%">
+			<b>결과</b>
+			<input id="dice1" class="form-control" type="text" style="width: 40px">
+			<input id="dice2" class="form-control" type="text" style="width: 40px">			
+			<b> 이동지점 </b> 
+			<input id="point" class="form-control" type="text" style="width: 45px">
+		</p>
 		
+		<!-- 플레이어 1 -->
 		<div class="btn btn-primary list-margin">
 			<h4>플레이어 🎠 </h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -30,9 +95,9 @@
 				<li>💸 : <span id="1pMoney">000</span> 만원</li>
 				<li>🔁 : <span id="1pRound">000</span> 바퀴째</li>
 			</ul>
-		</div>
-		<br>
+		</div> 
 		
+		<!-- 플레이어 2 -->
 		<div class="btn btn-success list-margin">
 			<h4>플레이어 🚀</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -41,7 +106,8 @@
 				<li>🔁 : <span id="2pRound">000</span> 바퀴째</li>
 			</ul>
 		</div>
-		<br>
+		 
+		<!-- 플레이어 3 -->
 		<div class="btn btn-warning list-margin">
 			<h4>플레이어 🛫</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -50,8 +116,8 @@
 				<li>🔁 : <span id="3pRound">000</span> 바퀴째</li>
 			</ul>
 		</div>
-		<br>
-		
+		 
+		 <!-- 플레이어 4 -->
 		<div class="btn btn-danger list-margin">
 			<h4>플레이어 🚁</h4>
 			<hr style="margin: 10px;"><!-- 구분선 -->	
@@ -60,27 +126,16 @@
 				<li>🔁 : <span id="4pRound">000</span> 바퀴째</li>
 			</ul>
 		</div>
+		 
+		<button id="gotoIsland" type="button" class="btn btn-primary list-margin"><h4>무인도로!</h4></button>
+		<button id="play" type="button" class="btn btn-success list-margin"><h4>굴려 🎲 굴려!</h4></button>
+		<h4 class="text-danger" id="playersTurn">다음은 누구차례?!</h4>
 		
-		<!-- 주사위 란 -->
-		<div class="form-inline btn btn-primary list-margin">
-			<input id="dice1" class="form-control" type="text" style="width: 40px">
-			<input id="dice2" class="form-control" type="text" style="width: 40px">
-			<b>결과</b>
-			<button id="play" type="button" class="btn btn-success"><h4>굴려 🎲 굴려!</h4></button>
-			<b> 이동지점 </b> 
-			<input id="point" class="form-control" type="text" style="width: 45px">
-		</div><!-- 주사위 끝 -->
-		
-		<br>
-		<!-- 주사위를 굴릴 플레이어 표시 -->
-		<div class="btn list-margin text-danger" align="center">
-			<h4><p id="playersTurn">다음은 누구차례?</p></h4>
-		</div>
 	</div>
 		
 	<div class="game-board">		
 		<!-- 게임 타이틀 -->
-		<h4 style="margin-left: 28%;"><b class="text-primary">BLUE MARBLE</b></h4 >
+		<h4 style="margin-left: 28%; margin-top : 0;"><b class="text-primary">👻BLUE MARBLE <img src="./favicon.ico"></b></h4 >
 		
 		<!-- 보드  -->
 		<div class="marble_board" align="center">
@@ -131,12 +186,12 @@
 							
 							<!-- 설명 -->
 							<h4 class="horses"><b>1p 🎠  2p 🚀  3p 🛫   4p 🚁</b></h4>							
-							<h3 class="text-primary"><b>전체 화면으로 플레이할 것을 적극 권장합니다. </b></h3>
+							<h5 class="text-primary"><b>전체 화면으로 플레이할 것을 적극 권장합니다. </b></h5>
 							
 							<div align="left">							
 							<p> 초기 지급 비용은 4인 기준 283만원 입니다.
 							<br>플레이어가 2인 일 경우 비용은 나눠 가지는 비용은 2배가 됩니다.</p>	
-							<p>한 바퀴를 돌때 마다  <b>월급 20만원</b>을 지급받습니다.</p>
+							<p>한 바퀴를 돌때 마다  <b class="text-warning">월급 20만원</b>을 지급받습니다.</p>
 							<p>두개의 주사위 두 개를 던져 나온 눈의 합만큼 진행합니다. 두개 주사위가 같은 수가 나오면  더블! 한번 더 굴리 실 수 있습니다.</p>
 							
 							<p>빈 영토에 멈추면 땅을 살 수 있습니다. <br> 첫 바퀴에는 땅과 별장까지만, 두번째 바퀴에는 빌딩, 세번째 바퀴에는 호텔을 지을 수 있습니다.
@@ -162,12 +217,11 @@
 							<p>상대방에게 지불할 금액이 부족하면 땅과 건물을 은행에 매각 또는 토지 증서를 상대방에게 인계해야 합니다. <small>(증서를 인계할 경우 차액은 받을 수 없습니다.)</small></p>		
 							<p>플레이어를 불문하고 3회 분할 납부(30, 30, 40)로 구매하는 방식. 서울에 3번째로 도착한, 마지막 40만원 지불자가 소유주</p>
 							
-							<h3>승리 조건</h3>
+							<h4 class="text-warning bold">승리 조건</h4>
 							<p>제한된 턴수(6턴)이 끝나면 자산이 많은 사람이 승리! <small>(자산기준 : 땅값 + 건물값 + 현재 보유자산)</small></p>
 							<p>또는 상대방 전원이 파산된 경우</p>
-							</div>
-							<br>
-							<p>게임을 시작하려면 게임시작 버튼을 클릭클릭! </b>
+							</div> 
+							<b>게임을 시작하려면 게임시작 버튼을 클릭클릭! </b>
 							<!-- 게임시작 버튼 -->
 							<button id="start" class="btn btn-danger" data-toggle="modal" data-target="#startGame"><b class="text-dark"> 게임 시작 ! </b></button>
 							<!-- 알림창들 -->
@@ -233,7 +287,7 @@
 						</td>
 					</tr>
 					
-					<tr height="88px">
+					<tr height="89px">
 						<td class="td_rl no_border">
 							<span id="p16"></span>
 						</td>
@@ -273,7 +327,7 @@
 						</td>
 					</tr>
 					
-					<tr height="92px">
+					<tr height="90px">
 						<td class="td_rl no_border">
 							<span id="p12"></span>
 						</td>
@@ -283,7 +337,7 @@
 						</td>
 					</tr>
 				
-					<tr height="158px" style="margin-bottom: 14px">
+					<tr height="156px" style="margin-bottom: 14px">
 						<td width="14%" class="td_tb no_border">
 							<span id="p11"></span>
 						</td>
@@ -311,10 +365,10 @@
 						<td width="7.8%" class="td_tb no_border">
 							<span id="p3"></span>
 						</td>
-						<td width="7.8%" class="td_tb no_border">
+						<td width="7.9%" class="td_tb no_border">
 							<span id="p2"></span>
 						</td>
-						<td width="14%" class="td_tb no_border">
+						<td width="13.9%" class="td_tb no_border">
 							<span id="p1">
 								<b class="horses" id="1p">🎠</b>
 								<!--  2p~4p 말
@@ -329,17 +383,18 @@
 			</div>
 		</div>
 		
-		<!-- dma -->
 		
+		
+		<!-- footer -->
+		<hr style="margin: 10px;"><!-- 구분선 -->	
+		<p style="margin-bottom : 0;">
+			BLUE MARBLE(자바스크립트 연습용. 부루마블과 똑같이 만들어 보기 ) 
+			<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
+		</p>
 		
 	</div>
-	<!-- footer -->
-	<hr style="margin: 10px;"><!-- 구분선 -->	
-	<p>
-		BLUE MARBLE(자바스크립트 연습용. 부루마블과 똑같이 만들어 보기 ) 
-		<b><a href="https://github.com/crazy-oung/BlueMarble_Board_Game.git">ⓒcrazy-oung</a></b>
-	</p>
-
+	
+	
 </div><!-- 내용 끝 -->
 </body>
 </html>

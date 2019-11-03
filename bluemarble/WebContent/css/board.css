@@ -15,31 +15,34 @@
 	background: rgba(0,0,0,0.9) !important;
 	border-radius: 20px;
 }
+/* 가운데에 가운데 정렬 */
 .in_middle{
-	align:center;
+	text-align:center;
+	padding-top:10%;
 }
 
 
+/* 게임 말 스타일 */
+.horses{
+	font-size: 3em;
+	text-shadow: 0px 0px 10px rgba(51, 51, 0);
+	cursor: pointer;
+}
+
+/* 게임 보드판 스타일 */
 td{
-	word-break:break-all
+	word-break:break-all;
 }
 td:hover  {
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.6);
 	background: rgba(204, 153, 0, 0.2);
 	border-radius: 15px;
 }
-
-.horses{
-	font-size: xx-large;
-	text-shadow: 0px 0px 10px rgba(51, 51, 0);
-	cursor: pointer;
-}
-
 .td_tb{
-	padding-top: 40px !important;
+	padding-top: 5px !important;
 }
 .td_rl{
-	padding-top: 30px !important;
+	padding-top: 10px !important;
 }
 
 .no_border {
@@ -53,32 +56,6 @@ td:hover  {
 	padding-bottom:5px;
 }
 
-.no_hover{
-	visibility: hidden;
-}
-
-.interface{
-	margin-top : 9%; 
-	padding : 7px;
-	float: right;
-	background: rgba(0,0,0,0.75);
-	width: 24%;
-	text-align: center;
-	border-radius: 15px 0px 0px 15px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, .03);
-}
-
-div.interface:hover {
-	margin-top : 8.8%;
-	box-shadow: 0px 0px 20px rgba(100,100,100);
-	width: 25%;
-}
-
-.list-margin{
-	margin: 4px;
-	width: 88%;
-}
-
 .game-board{
 	display:block;
 	padding-top:none !important;
@@ -88,12 +65,42 @@ div.interface:hover {
 	display:block;
 }
 
+.no_hover{
+	visibility: hidden;
+}
+
+.list-margin{
+	margin: 4px;
+	width: 88%;
+}
+
+
+/* 게잉 상황 계기판 스타일  */
+.interface{
+	margin-top : 9%; 
+	padding : 7px;
+	float: right;
+	background: rgba(0,0,0,0.75);
+	width: 24%;
+	text-align: center;
+	border-radius: 15px 0px 0px 15px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+div.interface:hover {
+	margin-top : 8.8%;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+	width: 25%;
+}
+
+/* 글꼴 및 여백 지정 */
 html,body{
 	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0;
     padding: 0;
 }
 
+/* 텍스트 색 스타일*/
 .text-danger{
 	color:tomato;
 }
@@ -103,10 +110,19 @@ html,body{
 .text-warning{
 	color:orange;
 }
+.bold{
+	font-weight: bold;
+}
+
+/* 기본 요소 스타일*/
 ul{
 	list-style: none;
 }
 ::selection {
-	background: #cf6;
+	background: #BFD641;
 	color: 	#000;
+}
+
+.btns_w_mar{
+	margin-right: 10px;
 }
