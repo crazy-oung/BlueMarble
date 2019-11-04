@@ -22,39 +22,49 @@
 </head>
 <body>
 	<!-- 알림 창들 ~ -->
+	
 		<!-- 건물 구입 및 통행료 부과 창 -->
-		  <div class="modal fade in_middle" id="landConfirm" role="dialog">
-		    <div class="modal-dialog modal-lg">		    
+		  <div class="modal fade in_middle" id="landConfirm" role="dialog" >
+		    <div class="modal-dialog modal-lg">	<!-- 알림 창 구성  -->	    
 		      <!-- 대지 통행료 및 대지 구입 질문 창 내용  -->
-		      <div class="modal-content">
-		        <div class="modal-header" style="padding:35px 50px;">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+		      <div class="modal-content" align="center">
+		        <div class="modal-header" style="padding:35px 50px;">		         	
+		          <h2><b id="landName">땅</b></h2>
 		        </div>
 		        <div class="modal-body" style="padding:40px 50px;">
 		          <form role="form">
-		            <div class="form-group">
-		              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-		              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+		            <div class="form-group" >
+		            	<h3>현재 보유 금액은 <b class="text-success" id="remainMoney"></b>만원 입니다.</h3>
+			            <table class="table table-hover" style="width:50%">
+			            	<tr>
+			            		<td align="center"class="noborder" width="30%"><h4 class="glyphicon bold glyphicon-map-marker">대지</h4></td>
+			            		<td class="noborder"><button type="button" class="btn btn-lg btn-block btn-success" id="buyLand"><b id="landPrice"></b> 만원</button> </td>
+			            	</tr>
+			            	<tr>
+			            		<td class="noborder" align="center"><h4 class="glyphicon bold glyphicon-home">별장1</h4></td>
+			            		<td class="noborder" ><button type="button" class="btn btn-lg btn-block btn-danger" id="buyHouse1"><b id="house1Price"></b> 만원</button></td>
+			            	</tr>
+			            	<tr>
+			            		<td class="noborder" align="center"><h4 class="glyphicon bold glyphicon-home">별장2</h4></td>
+			            		<td class="noborder" ><button type="button" class="btn btn-lg btn-block btn-danger" id="buyHouse2"><b id="house2Price"></b> 만원</button></td>
+			            	</tr>
+			            	<tr>
+			            		<td align="center" class="noborder"><h4 class="glyphicon bold glyphicon-briefcase">빌딩</h4></td>
+			            		<td class="noborder"><button type="button" class="btn btn-lg btn-block btn-warning" id="buyBuilding"><b id="buildingPrice"></b> 만원</button></td>
+			            	</tr>
+			            	<tr>
+			            		<td class="noborder" align="center"><h4 class="glyphicon bold glyphicon-cutlery">호텔</h4></td>
+			            		<td class="noborder"><button type="button" class="btn btn-lg btn-block btn-primary" id="buyHotel"><b id="hotelPrice"></b> 만원</button></td>
+			            	</tr>
+			            </table>
 		            </div>
-		            <div class="form-group">
-		              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-		              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-		            </div>
-		            <div class="checkbox">
-		              <label><input type="checkbox" value="" checked>Remember me</label>
-		            </div>
-		              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
 		          </form>
 		        </div>
-		        <div class="modal-footer">
-		          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-		          <p>Not a member? <a href="#">Sign Up</a></p>
-		          <p>Forgot <a href="#">Password?</a></p>
+		        <div class="modal-footer" id="landModal-footer">
+		          <!-- 상황에 따라 취소 버튼, 통행료 지불 문구 등 표시ㅣ -->
 		        </div>
-		      </div>
-		      
-		    </div>
+		      </div><!-- 내용 끝 -->
+		    </div><!-- 알림 창 구성 끝 -->
 		  </div> <!-- 건물 알림창 끝 -->
 		  
 		  <!-- 인원설정창 -->
@@ -72,7 +82,7 @@
 		        	<button type="button" class="btn btns_w_mar btn-primary" data-dismiss="modal" id="4people">4인 🙋🙋‍♀🙋‍♂🙋‍♂</button> 		      
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-lg btn-default" data-dismiss="modal" id="cancelGame">안할래요</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelGame">안할래요</button>
 			      </div>
 			    </div>								
 			  </div>
@@ -142,7 +152,7 @@
 		
 	<div class="game-board">		
 		<!-- 게임 타이틀 -->
-		<h4 style="margin-left: 28%; margin-top : 0;"><b class="text-primary">👻BLUE MARBLE <img src="./favicon.ico"></b></h4>
+		<h4 style="margin-left: 25%; margin-top : 0;"><b class="text-primary">BLUE MARBLE <img src="./favicon.ico"></b></h4>
 		
 		<!-- 보드  -->
 		<div class="marble_board" align="center">
@@ -190,7 +200,9 @@
 						</td>
 						<td class="no_border game_description" id="gameAlert" colspan="9" rowspan="9">
 							<!-- 빈칸 행 열 합치기 & 클릭 활성화 -> 게임시작시 비활성화   -->							
-							
+							<div class="on-game-board">
+								<h1>테스트</h1>
+							</div>
 							<!-- 설명 -->
 							<h4 class="horses"><b>1p 🎠  2p 🚀  3p 🛫   4p 🚁</b></h4>							
 							<h5 class="text-primary"><b>전체 화면으로 플레이할 것을 적극 권장합니다. </b></h5>

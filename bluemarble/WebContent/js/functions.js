@@ -53,20 +53,18 @@ function atDesertIsland(ran1, ran2){
 	
 	// 무인도에 더블로 들어온 경우
 	if(ran1==ran2 && turnCount[state]<2){		
-		console.log(parent.ran1+"와 "+parent.ran2+"으로 더블이 떴는데 무인도로 오셨구먼? 3턴 머무시오 ㅎㅎㅎㅎ");
-		parent.ran1++; 
-		console.log(parent.ran1+"와 "+parent.ran2+"변경시켜서 더블 방지 하기 킥킥");
+		console.log("더블이 떴는데 무인도 도착.. ㅜ");
+		return true;
+	}
+	if(ran1 != ran2 && turnCount[state] <4){
+		// 더블이 아니고 턴수가 충족되지 않으면  여전히 무인도에 
+		console.log("더블도 아니고 3턴도 지나지 않았군요. 한턴 쉽니다. 무인도에 머문 턴수: "+turnCount[state]);
 		return true;
 	}
 	if(ran1==ran2 && turnCount[state]>=2){
 		turnCount[state] = 0;
 		console.log("더블이다!!! 무인도 탈출 !");
 		return false;
-	}
-	if(ran1 != ran2 && turnCount[state] <4){
-		// 더블이 아니고 턴수가 충족되지 않으면  여전히 무인도에 
-		console.log("더블도 아니고 3턴도 지나지 않았군요. 한턴 쉽니다. 무인도에 머문 턴수: "+turnCount[state]);
-		return true;
 	}
 	
 	turnCount[state] =0;
@@ -76,16 +74,44 @@ function atDesertIsland(ran1, ran2){
 	
 }
 
-function landAlert() {
+// 알림창에 정보 입력 
+function insertLandInfo(landNum, state) {
+	// 배열을 불러올때 배열은 0부터 시작하므로 함수에 값을 넣어줄 때 변수에서 반드시 1을 뺀 값이 들어올 수 있도록 해줄 것!!!
+	console.log(lands[landNum]);
+	
+	// 글자 비우기
+	$("#landName").empty();
+	$("#landPrice").empty();
+	$("#house1Price").empty();
+	$("#house2Price").empty();
+	$("#buildingPrice").empty();
+	$("#hotelPrice").empty();
+	$("#remainMoney").empty();
+	$("#landModal-footer").empty();
+	
+	
+	// 값 출력
+	$("#landName").text(lands[0][landNum]);
+	$("#landPrice").text(lands[1][landNum]);
+	$("#house1Price").text(lands[2][landNum]);
+	$("#house2Price").text(lands[3][landNum]);
+	$("#buildingPrice").text(lands[4][landNum]);
+	$("#hotelPrice").text(lands[5][landNum]);
+	
+	console.log("잔액: " ,money[state]);
+	$("#remainMoney").text(money[state]);
+	
+	if(lands[6][landNum] <=0){
+		$("#landModal-footer").append("<button type='button' class='btn btn-block btn-danger' data-dismiss='modal'>아무것도 안할래요.(내 차례 넘기기) </button>");
+	}
 	
 }
 
 // 주사위 굴려 게임 진행하기
 function letsMove(ran1, ran2) {	
 	console.log("letsMove")
-	
-	landAlert();
-	 $("#landConfirm").modal();
+
+
 	
 	$("#playersTurn").empty();
 	$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님 차례입니다!");	
@@ -98,14 +124,17 @@ function letsMove(ran1, ran2) {
 		point[1][state] = point[0][state] + sum;
 	} else {
 		point[1][state] = point[0][state] + sum - 40;
+//		round[state]++;
+		$("#playersTurn").append("<p class='text-success italic bold' style='margin-top:8px; font-style:italic'>플레이어"+state+"님에게 월급지급!</p>");
+		money[state] +=20;
 	}
 
 	console.log("결과:",point[1][state])
 	$("#point").val(point[1][state]);
 	
-	// 무인도 검사 
-	if(point[0][state] == 11 && atDesertIsland(ran1, ran2)){
-		console.log("!!!무인도!!!");
+	// 무인도 검사
+	if( point[0][state] == 11 && atDesertIsland(ran1, ran2)){
+		console.log("!!!무인도에 있음!!!");	
 	}else{
 		// 말 지우기
 		$("#p"+point[0][state]).children("b").remove("#"+(state+1)+"p");
@@ -113,30 +142,59 @@ function letsMove(ran1, ran2) {
 		let afterId = "#p" + point[1][state];
 		$(afterId).append(player[state]);
 		point[0][state] = point[1][state];
+		// 말을 움직이고 무인도 확인.
+		if(point[1][state] == 11){
+			setTimeout(function() {
+				alert("무인도 입니다! 갇히셨어요! :( ");
+				atDesertIsland(ran1, ran2);
+			}, 300)	
+			state++;
+			checkMax();
+			return;
+		}
 	}
-	
-	landAlert();
-	 $("#landConfirm").modal();
-	
-	// 턴수 증가 
-	state++;
 	
 	// 더블이면 한번 더 
 	if(ran1 == ran2){
 		console.log("더블이다! 한번더!");
+		if(point[1][state] == 11 || point[0][state] == 11){
+			console.log("취소")
+			return;
+		}
 		state--;
 		$("#playersTurn").append("<p class='text-warning italic' style='margin-top:8px; font-style:italic'>더블입니다! 한번 더!</p>");
-		return;
+		
 	}
 	
-	if(state > maxState){
-		state = 0; 
-		// 진행된 턴수 증가 
-		turn ++;
-		console.log("턴증가! ",turn,"state = "+state);
+	console.log("도착한 곳 : ",lands[0][point[1][state]-1]);
+	
+	if(point[1][state] == 1){ //출발지점에 정착시 월급만 줄 것.
+		$("#playersTurn").append("<p class='text-success italic bold' style='margin-top:8px; font-style:italic'>플레이어"+state+"님에게 월급지급!</p>");
+		money[state] +=20;
+	}else if(lands[0][point[1][state]-1] === "🔑 황금열쇠"){
+		console.log("황금 열쇠를 뽑습니다.!")
+	}else{
+		// 토지 정보 알림창에 입력
+		insertLandInfo(point[1][state]-1, state);
+		// 알림창 출력
+		 $("#landConfirm").modal({backdrop: 'static'});
 	}
+	
+	// 턴수 증가 
+	state++;
+	
+	checkMax();
+	
 }
 
-
+function checkMax() {
+	console.log("checkMax")
+	if(this.state > this.maxState){
+		this.state = 0; 
+		// 진행된 턴수 증가 
+		this.turn ++;
+		console.log("턴증가! ",this.turn,"state = "+this.state);
+	}
+}
 
 
