@@ -27,7 +27,7 @@ let lands = [[	"🏁 출발지점!",
 					"부에노스아이레스","🔑 황금열쇠","상파올루","시드니","부산","하와이","리스본","퀸엘리자베스호","마드리드","우주여행",
 					"도쿄","컬럼비아호","파리","로마","🔑 황금열쇠","런던","뉴욕","사회복지기금","서울"
 				],
-				[	20,	// 땅값 출발지점은 월급을 준다.	1번
+				[	"출발지점 월급을 받습니다.",	// 토지  출발지점은 월급을 준다.	1번
 					5, 0, 8, 8, 20, 10, 0, 10, 12, 0,
 					14, 0, 16, 16, 20, 18, 0, 18, 20, 0,
 					22, 0, 24, 24, 50, 26, 26, 30, 28, 20,
@@ -72,10 +72,11 @@ let goldenKey = [ "축하합니다 ! 장학금 20만원을 받게 되었어요 !
 // 게임 진행 코드 시작
 $(document).ready(function() {
 	
-	// 준비 
+	// 준비 - 자바스크립트 로드  
 	console.log("document ready");
 	$.getScript("/bluemarble/js/functions.js");	
 	console.log("환영합니다.");
+	
 	
 	// 2인 플레이 
 	$("#2people").click( function() {		
@@ -95,19 +96,23 @@ $(document).ready(function() {
 		gameStart(player);
 	});
 	
-	// 구매- 대지 버튼 클릭시
+	
+	// 구매- 대지 버튼 
 	$("#buyLand").click( function() {
-		console.log("대지 구입!");
-		money[state] -= $("landPrice").val();
+		let landNum = point[1][state-1]-1;
+		console.log(state+"플레이어의 돈 : "+money[state]);
+		console.log("대지 구입! 지불비용: "+ lands[1][landNum] );
+		
+		money[state] -= lands[1][landNum];
 		
 		console.log("잔액: "+money[state]);
 		
-		$("#"+(state+1)+"pMoney").empty();
-		$("#"+(state+1)+"pMoney").text(money[state])
 		
-		$("#landConfirm").modal("hide"); //닫기 		
+		$("#"+(state)+"pMoney").text(money[state])
+		
+		$("#landConfirm").modal("hide"); // 구입창 닫기	
 	});
-	
+
 	// 구매- 별장1 버튼 클릭시
 	$("#buyHouse1").click( function() {
 		console.log("별장1 구입!");
@@ -139,11 +144,14 @@ $(document).ready(function() {
 	// 건너뛰기- 대지 버튼 클릭시
 	$("#cancelBuy").click( function() {
 		$("#landConfirm").modal("hide"); //닫기 
+		
 	});
 	
 	
 	// 플레이 버튼 클릭 click!!!!
 	$("#play").click( function() {		
+		state++;
+		checkMax();
 		console.log((state+1)+"p 가 주사위 던짐!");
 		// 턴 검사
 //		if(turn>20){
@@ -158,11 +166,13 @@ $(document).ready(function() {
 		
 		// 수 랜덤으로 뽑아 value값에 넣기
 		$("#dice1").val(ran1);
-		$("#dice2").val(ran2);		
+		$("#dice2").val(ran2);
 		console.log("현재 현황",point[1])
 		
+	
+		$("#playersTurn").empty();
+		$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님 차례입니다!");	
 		
-		//
 		
 		// 게임 진행 
 		letsMove(ran1, ran2);
@@ -189,9 +199,6 @@ $(document).ready(function() {
 		$("#dice1").val(ran1);
 		$("#dice2").val(ran2);		
 		console.log("현재 현황",point[1])
-		
-		
-		
 		
 		// 게임 진행 
 		letsMove(ran1, ran2);
