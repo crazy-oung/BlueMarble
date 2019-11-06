@@ -20,8 +20,10 @@ let state = 0;
 let turnCount = [0, 0, 0, 0];
 // 돈 초기화
 let money = [0,0,0,0];
+// 기부금 초기화
+let donation = 0;
 // 출발지점 + 국가 이름, 땅 값, 별장1 값, 별장2 값, 빌딩 , 호텔 값 초기화
-let lands = [[	"🏁 출발지점!",
+let lands = [[	"🏁 출발지점!",		// 0번  칸 이름 
 					"타이베이","🔑 황금열쇠","베이징","마닐라","🗻 제주","싱가포르","🔑 황금열쇠","카이로","이스탄불","무인도",
 					"아테네","🔑 황금열쇠","코펜하겐","스톡홀름","콩코드여객기","베른","🔑 황금열쇠","베를린","오타와","사회복지기금 접수처",
 					"부에노스아이레스","🔑 황금열쇠","상파올루","시드니","부산","하와이","리스본","퀸엘리자베스호","마드리드","우주여행",
@@ -99,7 +101,9 @@ $(document).ready(function() {
 	
 	// 구매- 대지 버튼 
 	$("#buyLand").click( function() {
-		let landNum = point[1][state-1]-1;
+		
+		let landNum = point[1][state-1] - 1 ;
+		console.log((landNum+1)+"칸에 도착! 수정할 lands배열 인덱스 번호: "+landNum);
 		console.log(state+"플레이어의 돈 : "+money[state]);
 		console.log("대지 구입! 지불비용: "+ lands[1][landNum] );
 		
@@ -107,9 +111,13 @@ $(document).ready(function() {
 		
 		console.log("잔액: "+money[state]);
 		
-		
 		$("#"+(state)+"pMoney").text(money[state])
 		
+		// 토지 소유주 지정
+		lands[6][landNum] = state-1;
+		console.log(lands[6][landNum]);
+		
+		console.log("새로운 토지 소유자 플레이어"+(state)+"님!!! "+lands[0][landNum]+"의 소유주(players배열 인덱스번호:"+lands[6][landNum]+")가 되셨습니다 ~!");
 		$("#landConfirm").modal("hide"); // 구입창 닫기	
 	});
 
@@ -150,32 +158,28 @@ $(document).ready(function() {
 	
 	// 플레이 버튼 클릭 click!!!!
 	$("#play").click( function() {		
-		state++;
-		checkMax();
+		
+		console.log("주사위를 굴렸습니다!");
+		rollDice();
+		
+		
+		$("#playersTurn").empty();
+		$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님의 턴이 지났어요!");	
+		
+		console.log("다음 차례인 플레이어 출력!")
 		console.log((state+1)+"p 가 주사위 던짐!");
 		// 턴 검사
 //		if(turn>20){
 //			alert("게임 종료!! 승자는 누구입니다.");
 //			return;
-//		}
-		
-		
-		// 두개 주사위 굴리기
-		let ran1 = Math.floor((Math.random() * 6)+1);	//1~6
-		let ran2 = Math.floor((Math.random() * 6)+1);	//1~6
-		
-		// 수 랜덤으로 뽑아 value값에 넣기
-		$("#dice1").val(ran1);
-		$("#dice2").val(ran2);
-		console.log("현재 현황",point[1])
-		
-	
-		$("#playersTurn").empty();
-		$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님 차례입니다!");	
-		
-		
+//		}	
+
 		// 게임 진행 
 		letsMove(ran1, ran2);
+		
+		console.log("다음 플레이어로 차례가 넘어갔습니다.");
+		state++;
+		checkMax();
 		
 	});
 	
