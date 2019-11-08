@@ -36,7 +36,7 @@ function gameStart(players) {
 	
 	// n인 스타트 ! 알림
 	$("#playersTurn").empty();
-	$("#playersTurn").append("<strong class='text-danger'>"+(maxState+1)+"인 게임 스타트!!!</strong>");	
+	$("#playersTurn").append("<strong class='text-danger'>"+(maxState+1)+"인 게임 스타트!!!</strong><br>");	
 	$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님 차례입니다!");	
 }
 
@@ -87,11 +87,12 @@ function atDesertIsland(ran1, ran2){
 	
 }
 
-
+// 우주여행 함수 
 function moveTo() {
-	console.log("move to...")
+	console.log("우주여행 떠날 곳 고르는 중...");
 	
-	
+	// 알림창 출력
+	 $("#spaceTravelAlert").modal({backdrop: 'static'});
 	
 	return;
 }
@@ -105,6 +106,11 @@ function getSalary() {
 	console.log("잔고: "+money[state]);
 	$("#"+(state+1)+"pMoney").text(money[state])
 	return;
+}
+
+// 더블 검사 함수 
+function checkDouble(){
+	
 }
 
 // 주사위 굴려 게임 진행하기

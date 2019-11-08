@@ -79,7 +79,6 @@ $(document).ready(function() {
 	$.getScript("/bluemarble/js/functions.js");	
 	console.log("환영합니다.");
 	
-	
 	// 2인 플레이 
 	$("#2people").click( function() {		
 		let player = maxState = 1;
@@ -160,8 +159,7 @@ $(document).ready(function() {
 	$("#play").click( function() {		
 		
 		console.log("주사위를 굴렸습니다!");
-		rollDice();
-		
+		rollDice();	// 랜덤으로 수를 뽑는 함수
 		
 		$("#playersTurn").empty();
 		$("#playersTurn").append("<strong class='text-primary'>플레이어"+(state+1)+"</strong>님의 턴이 지났어요!");	
@@ -187,19 +185,29 @@ $(document).ready(function() {
 	
 	//무인도 테스트용 버튼	
 	$("#gotoIsland").click( function() {		
-		console.log((state+1)+"p 가 주사위 던짐!");
-		// 턴 검사
-//		if(turn>20){
-//			alert("게임 종료!! 승자는 누구입니다.");
-//			return;
-//		}
-		
+		console.log((state+1)+"p 가 주사위 던짐! 무인도 테스트"); 
 		
 		// 두개 주사위 굴리기
-		let ran1 = 5;	//1~6
-		let ran2 = 5;	//1~6
+		let ran1 = 5;	 
+		let ran2 = 5;	 
+		 
+		$("#dice1").val(ran1);
+		$("#dice2").val(ran2);		
+		console.log("현재 현황",point[1])
 		
-		// 수 랜덤으로 뽑아 value값에 넣기
+		// 게임 진행 
+		letsMove(ran1, ran2);
+		
+	});
+	
+	//우주여행 테스트용 버튼	
+	$("#goSpaceTravel").click( function() {		
+		console.log((state+1)+"p 가 주사위 던짐! 우주여행 테스트");  
+		
+		// 두개 주사위 굴리기
+		let ran1 = 20;	 
+		let ran2 = 10;	 
+		 
 		$("#dice1").val(ran1);
 		$("#dice2").val(ran2);		
 		console.log("현재 현황",point[1])
